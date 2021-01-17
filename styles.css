@@ -1,12 +1,138 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
 
 .bg {
-    position: fixed;
-    top: 0;
-    left: 0;
+    /* The image used */
+    background-image: url("https://i.ibb.co/zfsMFHV/neon-back-1440-900.png");
 
-    min-width: 100%;
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.header {
+    background-color: black;
+    vertical-align: middle;
+    position: fixed;
+    height: 80px;
+    line-height: 80px;
+    width: 100%;
+    top: 0;
+    text-align: center;
+}
+
+.header a{
+    margin-right: 10px;
+    font-size: xx-large;
+    display: inline-block;
+    color: gray;
+    text-decoration: none;
+    letter-spacing: normal;
+    transition: all 0.3s ease;
+}
+
+.header a:hover{
+    color: white;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.content{
+    padding-top: 80px;
+}
+
+.content h1{
+    text-align: center;
+    font-family: Bahnschrift;
+    font-size: xx-large;
+}
+
+.footer{
+    width: 100%;
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+}
+
+.footer .about, .contacts, .info h3{
+    color: white;
+}
+
+.footer .about, .info, .contacts p{
+    color: white;
+    margin: auto;
+}
+
+.footer .about{
+    float: left;
+    display:inline-block;
+    position:relative;
+    width:calc(100% / 3);
+}
+
+.footer .info{
+    float: left;
+    display:inline-block;
+    position:relative;
+    width:calc(100% / 3);
+}
+
+.footer .contacts{
+    float: right;
+    display:inline-block;
+    position:relative;
+    width:calc(100% / 3);
+}
+
+.footer .info .info-img{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+.footer .info .info-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+
+
+.instagram, .vk, .mail{
+    float: left;
+    display:block;
+    position:relative;
+    width:calc(100% /9);
+    height: calc(100%/9);
+    margin-right: calc(100%/9);
+    margin-left: calc(100%/9);
+}
+
+
+.vk img{
+    object-fit: scale-down;
+    width: 100%;
+    height: 100%;
+
+}
+
+.instagram img{
+    object-fit: scale-down;
+    width: 100%;
+    height: 100%;
+    margin-right: calc(100%/9);
+}
+
+.mail img{
+    object-fit: scale-down;
+    width: 100%;
+    height: 100%;
+}
+
+
 
