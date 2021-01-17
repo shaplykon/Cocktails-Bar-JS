@@ -5,8 +5,8 @@ body, html {
 
 .bg {
     /* The image used */
-    background-image: url("https://i.ibb.co/zfsMFHV/neon-back-1440-900.png");
-
+    /*background-image: url("https://i.ibb.co/zfsMFHV/neon-back-1440-900.png");*/
+    background-image: url("https://sun9-5.userapi.com/impg/rn5TFWu3scG-U1M7Lgr5yvn157EwFqdxhTaCoQ/wRpZfHLgiqs.jpg?size=1440x900&quality=96&proxy=1&sign=b8fcd4d2e4a687fa21c94eff3dc4514e&type=album");
     /* Full height */
     height: 100%;
 
@@ -17,7 +17,8 @@ body, html {
 }
 
 .header {
-    background-color: black;
+
+
     vertical-align: middle;
     position: fixed;
     height: 80px;
@@ -31,14 +32,14 @@ body, html {
     margin-right: 10px;
     font-size: xx-large;
     display: inline-block;
-    color: gray;
+    color: white;
     text-decoration: none;
     letter-spacing: normal;
     transition: all 0.3s ease;
 }
 
 .header a:hover{
-    color: white;
+    color: bisque;
     letter-spacing: 2px;
     transition: all 0.3s ease;
 }
@@ -49,7 +50,7 @@ body, html {
 
 .content h1{
     text-align: center;
-    font-family: Bahnschrift;
+    font-family: "Yu Gothic UI Light", serif;
     font-size: xx-large;
 }
 
@@ -63,7 +64,6 @@ body, html {
 .footer .about, .contacts, .info h3{
     color: white;
 }
-
 .footer .about, .info, .contacts p{
     color: white;
     margin: auto;
@@ -89,7 +89,6 @@ body, html {
     position:relative;
     width:calc(100% / 3);
 }
-
 .footer .info .info-img{
     width: 100px;
     height: 100px;
@@ -102,37 +101,33 @@ body, html {
 }
 
 
-
-.instagram, .vk, .mail{
+.logos{
+    width: 100%;
+    overflow: hidden;
+    margin-left: calc(100%/9);
+    margin-top: calc(100%/18);
+}
+.logo{
     float: left;
     display:block;
     position:relative;
     width:calc(100% /9);
     height: calc(100%/9);
-    margin-right: calc(100%/9);
     margin-left: calc(100%/9);
 }
 
 
-.vk img{
+.logo img{
+    transition: all 0.3s;
     object-fit: scale-down;
-    width: 100%;
-    height: 100%;
-
+    width: 80%;
+    height: 80%;
 }
 
-.instagram img{
-    object-fit: scale-down;
-    width: 100%;
-    height: 100%;
-    margin-right: calc(100%/9);
-}
-
-.mail img{
+.logo img:hover{
+    transition: all 0.3s;
     object-fit: scale-down;
     width: 100%;
     height: 100%;
 }
-
-
 

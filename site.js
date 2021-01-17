@@ -10,6 +10,7 @@ window.addEventListener("scroll", function () {
             behavior: "smooth",
             block: "start"
         });
+        document.getElementById("header").style.backgroundColor = "black";
     }
     else if (isInViewport(bg) && !isDownwardScrolling()) {
         const element = document.getElementById("background");
@@ -17,6 +18,7 @@ window.addEventListener("scroll", function () {
             behavior: "smooth",
             block: "start"
         });
+        document.getElementById("header").style.backgroundColor = "transparent";
     }
 
 });
