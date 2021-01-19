@@ -1,5 +1,6 @@
 .auth-block{
-    margin: 12.5% 30% 12.5% 30%;
+    /*margin: 12.5% 30% 12.5% 30%;*/
+    margin: auto auto;
     width: 40%;
     height: 50%;
     text-align: center;

@@ -3,9 +3,8 @@ body, html {
     margin: 0;
     scroll-snap-type: y mandatory;
 }
-
+/* HEADER STYLES*/
 .header {
-    /*background-color: black;*/
     vertical-align: middle;
     position: fixed;
     height: 80px;
@@ -31,7 +30,9 @@ body, html {
     letter-spacing: 2px;
     transition: all 0.3s ease;
 }
+/* END HEADER STYLES*/
 
+/* FOOTER STYLES*/
 .footer {
     scroll-snap-align: start;
     width: 100%;
@@ -81,7 +82,9 @@ body, html {
     height: 100%;
     object-fit: scale-down;
 }
+/* END FOOTER STYLES*/
 
+/* LOGOS STYLES*/
 .logos{
     width: 100%;
     overflow: hidden;
@@ -111,3 +114,36 @@ body, html {
     width: 100%;
     height: 100%;
 }
+/* END LOGOS STYLES*/
+
+/* PRODUCT CARDS STYLES*/
+.products{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 200px );
+    column-gap: 50px;
+    row-gap: 25px;
+    height: 100%;
+    padding: 0 30px;
+    margin-bottom: 20px;
+}
+
+.card{
+    height: 220px;
+    background-color: grey;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+}
+
+.card h3{
+    white-space: nowrap;
+    font-size: large;
+    font-style: italic;
+    color: white;
+}
+/* END PRODUCT CARDS STYLES*/
