@@ -1,0 +1,57 @@
+.auth-block{
+    margin: 12.5% 30% 12.5% 30%;
+    width: 40%;
+    height: 50%;
+    text-align: center;
+    border-radius: 25px;
+    /*background: rgb(131,58,180);*/
+    /*background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);*/
+    background: #dbd9d9;
+    box-shadow: 5px 5px 5px 0px rgb(121, 120, 120);
+}
+
+input[type=text] {
+    font-size: large;
+    width: 60%;
+    padding: 12px 20px;
+    margin:3%  20% 3% 20%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transform: initial;
+    transition: all 0.3s;
+}
+
+input[type=text]:focus {
+    transform: scale(1.1, 1.1);
+    transition: all 0.3s;
+}
+
+label{
+    font-size: xx-large;
+
+}
+
+input[type=button]{
+    width: 40%;
+    margin: 20px;
+    transform: initial;
+    background-color: #878a8a;
+    border: 0;
+    transition: all 0.3s;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: large;
+}
+
+input[type=button]:hover{
+    transform: scale(1.2, 1.2);
+    transition: all 0.3s;
+    background-color: #4d4e4e;
+}
+
+
+.auth-block h1 {
+    margin: 20px;
+    font-size: 40px;
+    font-family: "Yu Gothic UI Light", serif;
+}
