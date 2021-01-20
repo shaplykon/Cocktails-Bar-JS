@@ -117,59 +117,8 @@ body, html {
 }
 /* END LOGOS STYLES*/
 
-/* PRODUCT CARDS STYLES*/
-.products{
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, 250px );
-    column-gap: 50px;
-    row-gap: 50px;
-    height: 100%;
-    padding: 0 70px;
-    margin-bottom: 30px;
-}
-
-.card{
-    position: relative;
-    z-index: 0;
-    height: 300px;
-    background-color: #cac6c6;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /*text-align: center;*/
-    /*padding: 10px;*/
-    transition: all 0.1s;
-    box-shadow: 0 0 7px rgb(55, 64, 64)
-}
-
-.card:hover{
-    transform: scale(1.02, 1.02);
-}
-
-.card h3{
-    position: relative;
-    top: 0;
-    margin: 10px;
-    white-space: nowrap;
-    font-size: 30px;
-    color: white;
-}
-
-.card-image{
-    width: 80%;
-    height: 60%;
-}
-
-.card-image img{
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-}
-
-.card .rate{
+/* RATE BLOCK STYLES*/
+.rate{
     width: 60%;
     height: 10%;
     background-color: greenyellow;
@@ -179,13 +128,12 @@ body, html {
     padding: 3%;
 }
 
-.fa{
-    font-size: 35px;
-
+.rate .fa{
+    font-size: 25px;
     color: white;
 
 }
-.checked{
+.rate .checked{
     color: orange;
 }
-/* END PRODUCT CARDS STYLES*/
+/* END RATE BLOCK STYLES*/

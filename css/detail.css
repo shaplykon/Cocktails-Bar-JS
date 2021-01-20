@@ -1,0 +1,102 @@
+body, html {
+    height: 100%;
+    scroll-snap-type: y mandatory;
+}
+
+.detail {
+    width: 1000px;
+    height: 400px;
+    margin: 50px auto;
+    border-radius: 20px;
+}
+
+.detail .detail-card {
+    display:inline-block;
+    position: relative;
+    float: left;
+    width: 40%;
+    background-color: #e0dede;
+    border-radius: 20px 0 0 20px;
+    height: 100%;
+
+    align-items: center;
+    text-align: center;
+    /*padding: 10px;*/
+
+}
+
+.detail-card h3{
+
+    font-size: 30px;
+    color: white;
+    margin-top: 10px;
+}
+
+.detail-card img{
+    width: 50%;
+    height: 55%;
+}
+
+.detail .detail-card .rate{
+    width: 60%;
+    background-color: greenyellow;
+    border-radius: 10px;
+    margin: 5%  auto 0;
+    text-align: center;
+    padding: 3%;
+}
+
+.rate .fa{
+    font-size: 35px;
+    color: white;
+
+}
+.rate .checked{
+    color: orange;
+}
+
+.detail .detail-info{
+    border-radius:0  20px  20px 0 ;
+    display:inline-block;
+    background-color: black;
+    position: relative;
+    width: 60%;
+    height: 100%;
+    float: right ;
+    text-align: center;
+
+}
+
+.detail .detail-info p{
+    font-size: 30px;
+    color: white;
+    margin-top: 10px;
+}
+
+.description{
+    text-align: center;
+    width: 1000px;
+    border-radius: 25px;
+    background-color: #e0dede;
+    padding: 5px 10px;
+    overflow: hidden;
+    margin: 0 auto ;
+}
+
+.comments{
+    background-color: #e0dede;
+    margin: 20px auto;
+    width: 1000px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+textarea{
+    border-radius: 25px;
+    margin: 25px;
+    padding: 10px;
+    width: 800px;
+    height: 100px;
+    resize: none;
+}
+
