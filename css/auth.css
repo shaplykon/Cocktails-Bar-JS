@@ -42,12 +42,14 @@ input[type=button]{
     padding: 10px;
     border-radius: 20px;
     font-size: large;
+
 }
 
 input[type=button]:hover{
     transform: scale(1.2, 1.2);
     transition: all 0.3s;
     background-color: #4d4e4e;
+    color: white;
 }
 
 
