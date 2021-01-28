@@ -95,8 +95,22 @@ textarea{
     border-radius: 25px;
     margin: 25px;
     padding: 10px;
-    width: 800px;
+    width: 900px;
     height: 100px;
     resize: none;
+}
+
+input[type=submit]{
+    width: 20%;
+    margin-top: 0;
+    margin-bottom: 10px;
+    transform: initial;
+    background-color: #878a8a;
+    border: 0;
+    transition: all 0.3s;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: large;
+
 }
 

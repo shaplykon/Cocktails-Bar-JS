@@ -128,12 +128,39 @@ body, html {
     padding: 3%;
 }
 
-.rate .fa{
+.rate .fa {
     font-size: 25px;
     color: white;
 
 }
-.rate .checked{
+
+.rate .checked {
     color: orange;
 }
+
 /* END RATE BLOCK STYLES*/
+
+@media screen and (max-width: 768px) {
+
+    body, html{
+        scroll-snap-type: none;
+    }
+
+    .footer{
+        scroll-snap-type: none;
+    }
+
+    .footer .about {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .footer .info {
+        width: 100%;
+    }
+
+    .footer .contacts {
+        width: 100%;
+        margin-bottom: 100px;
+    }
+}
