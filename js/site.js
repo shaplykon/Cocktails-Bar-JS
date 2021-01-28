@@ -1,5 +1,4 @@
 let lastScrollTop = 0;
-window.onload = init;
 window.addEventListener("scroll", function () {
     const bg = document.getElementById("background");
     if (isInViewport(bg) && isDownwardScrolling()) {

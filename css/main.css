@@ -1,6 +1,7 @@
 body, html {
     height: 100%;
     margin: 0;
+
     scroll-snap-type: y mandatory;
 }
 /* HEADER STYLES*/
@@ -140,7 +141,7 @@ body, html {
 
 /* END RATE BLOCK STYLES*/
 
-@media screen and (max-width: 768px) {
+@media all and  (max-device-width: 768px) {
 
     body, html{
         scroll-snap-type: none;
@@ -162,5 +163,16 @@ body, html {
     .footer .contacts {
         width: 100%;
         margin-bottom: 100px;
+    }
+
+    .logo{
+        float: left;
+        display:block;
+        position:relative;
+        width:calc(100% /5.4);
+    }
+
+    .logos{
+        margin: 0 auto;
     }
 }
