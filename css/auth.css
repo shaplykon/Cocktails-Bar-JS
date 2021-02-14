@@ -10,6 +10,7 @@
     background: #dbd9d9;
     /*box-shadow: 5px 5px 5px 0 rgb(121, 120, 120);*/
     box-shadow: 0 0 7px rgb(55, 64, 64);
+
 }
 
 input[type=text] {
@@ -24,18 +25,20 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-    transform: scale(1.1, 1.1);
-    transition: all 0.3s;
+    transform: scale(1.05, 1.05);
+    transition: all 0.2s;
+    border: 2px solid blue;
 }
 
 label{
     font-size: xx-large;
-
+    width: 100%;
 }
 
+
 input[type=button]{
-    width: 40%;
-    margin: 20px;
+    width: 60%;
+    margin: 40px;
     transform: initial;
     background-color: #878a8a;
     border: 0;
@@ -43,11 +46,11 @@ input[type=button]{
     padding: 10px;
     border-radius: 20px;
     font-size: large;
-
+    color: white;
 }
 
-input[type=button]:hover{
-    transform: scale(1.2, 1.2);
+input[type=button]:hover:enabled{
+    transform: scale(1.1, 1.1);
     transition: all 0.3s;
     background-color: #4d4e4e;
     color: white;
@@ -58,4 +61,8 @@ input[type=button]:hover{
     margin: 20px;
     font-size: 40px;
     font-family: "Yu Gothic UI Light", serif;
+}
+.checkbox-label{
+    font-size: x-large;
+    margin: 0 auto;
 }

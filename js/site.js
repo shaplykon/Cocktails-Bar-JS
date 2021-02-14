@@ -1,4 +1,5 @@
 let lastScrollTop = 0;
+
 window.addEventListener("scroll", function () {
     const bg = document.getElementById("background");
     if (isInViewport(bg) && isDownwardScrolling()) {
@@ -31,6 +32,10 @@ function isDownwardScrolling(){
     isDownward = st > lastScrollTop;
     lastScrollTop = st <= 0 ? 0 : st;
     return isDownward;
+}
+
+function cardClick(){
+    window.open("detail.html", "_self", false);
 }
 
 
