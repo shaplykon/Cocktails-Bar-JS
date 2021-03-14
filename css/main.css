@@ -1,7 +1,6 @@
 body, html {
     height: 100%;
     margin: 0;
-
     scroll-snap-type: y mandatory;
 }
 /* HEADER STYLES*/
@@ -140,6 +139,11 @@ body, html {
 }
 
 /* END RATE BLOCK STYLES*/
+
+.anchor{
+    scroll-snap-align: start;
+    height: 80px;
+}
 
 @media all and  (max-device-width: 768px) {
 

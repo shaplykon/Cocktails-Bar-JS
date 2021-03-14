@@ -16,7 +16,7 @@
 .content {
     scroll-snap-align: start;
     scroll-behavior: smooth;
-    padding-top: 80px;
+
 }
 
 .content h1{

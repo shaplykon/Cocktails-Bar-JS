@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../css/auth.css">
-
+    <script rel="script" src="../js/auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script rel="script" src="../js/site.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -17,8 +19,8 @@
         <input type="text" id="login" name="login" placeholder="Login"/>
         <label for="password">Password</label>
         <input type="text" id="password" name="password"  placeholder="Password"/>
-        <input type="button" value="Login">
-
+        <div class="auth-error" id="errorField"></div>
+        <input type="button" value="Login" onclick="loginFunction()">
     </form>
 </div>
 

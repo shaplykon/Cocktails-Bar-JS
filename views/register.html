@@ -3,6 +3,8 @@
 <head>
     <link rel="stylesheet" href="../css/auth.css">
     <script rel="script" src="../js/auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script rel="script" src="../js/site.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -21,7 +23,8 @@
         <input type="text" id="repeat_password" name="repeat_password" placeholder="Repeat password"/>
         <input type="checkbox" id="rules_agreement" name="agreement" onclick="checkboxClicked()"/>
         <label for="rules_agreement" class="checkbox-label">I agree with rules</label>
-        <input type="button" value="Sign up" id="sign_button" disabled>
+        <div class="auth-error" id="errorField"></div>
+        <input type="button" value="Sign up" id="sign_button" disabled onclick="registerFunction()">
     </form>
 </div>
 </body>
