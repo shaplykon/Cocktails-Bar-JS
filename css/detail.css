@@ -10,6 +10,11 @@ body, html {
     border-radius: 20px;
 }
 
+.anchor{
+    scroll-snap-align: start;
+    height: 80px;
+}
+
 .detail .detail-card {
     display:inline-block;
     position: relative;
@@ -111,6 +116,4 @@ input[type=submit]{
     padding: 10px;
     border-radius: 20px;
     font-size: large;
-
 }
-

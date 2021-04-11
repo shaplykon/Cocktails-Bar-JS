@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/create.css">
+    <!--    <link rel="stylesheet" href="../css/main.css">-->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+    <script rel="script" src="../js/templates.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <meta charset="UTF-8">
+    <script rel="script" src="../js/templates/ingredientInput.js"></script>
+    <script rel="script" src="../js/create.js"></script>
+    <title>Create</title>
+</head>
+
+<body>
+
+<form class="create-coffee-form" onsubmit="submitForm(); return false;">
+    <div class="coffee-form-block">
+        <div class="coffee-form-left">
+
+            <label for="coffee-name"></label>
+            <input type="text" id="coffee-name" name="coffee-name" value="" placeholder="Name" required="">
+            <br>
+            <label for="coffee-value">Value:</label>
+
+            <input type="number" id="coffee-value" name="coffee-value" value="" placeholder="ml" oninput="recalculateImage();" required="">
+
+            <label for="description-textarea"></label>
+            <textarea id="description-textarea" name="name" rows="3" placeholder="Description" required=""></textarea>
+        </div>
+
+        <div class="coffee-form-right">
+            <div class="add-ingredients-section">
+                <ul class="ingredients-select-list">
+                    <div class="ingredient-select-list-item">
+                        <div class="flex-ingredient-wrap">
+                            <select class="ingredients-select" name="ingredients-select" onchange="recalculateImage();">
+                                <option value="espresso">Espresso</option>
+                                <option value="water">Water</option>
+                                <option value="milk">Milk</option>
+                                <option value="milk-foam">Milk foam</option>
+                                <option value="chocolate">Chocolate</option>
+                                <option value="honey">Honey</option>
+                                <option value="syrup">Syrup</option>
+                                <option value="whipped-cream">Whipped cream</option>
+                                <option value="liquor">Liquor</option>
+                                <option value="whiskey">Whiskey</option>
+                            </select>
+                                <input class="ingredient-value-input" type="number" name="ingredient-value" value="" placeholder="%" oninput="recalculateImage();" required="">
+
+                        </div>
+                    </div>
+                </ul>
+                <button id="add-ingredient-button" type="button" name="add-ingredient-button" onclick="addIngredient();"><i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <button class="submit-button" id="create-button" name="create-button">CREATE</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+</body>
+
+</html>

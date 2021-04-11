@@ -4,7 +4,7 @@
     background-image: url("https://sun9-5.userapi.com/impg/rn5TFWu3scG-U1M7Lgr5yvn157EwFqdxhTaCoQ/wRpZfHLgiqs.jpg?size=1440x900&quality=96&proxy=1&sign=b8fcd4d2e4a687fa21c94eff3dc4514e&type=album");
     /* Full height */
     height: 100%;
-
+    margin-bottom: 80px;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -16,10 +16,11 @@
 .content {
     scroll-snap-align: start;
     scroll-behavior: smooth;
-
+    padding-top: 80px;
 }
 
 .content h1{
+
     text-align: center;
     font-family: "Yu Gothic UI Light", serif;
     font-size: xx-large;

@@ -5,6 +5,7 @@
 <!--    <link rel="stylesheet" href="../css/main.css">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
+    <script rel="script" src="../js/detail.js"></script>
     <title>Title</title>
 </head>
 
@@ -39,7 +40,7 @@
 
 <section class="comments">
     <h1>Comments</h1>
-    <form>
+    <form onsubmit="leaveComment()">
         <textarea id="comment" name="comment" placeholder="Leave your comment"></textarea>
         <input type="submit" value="Send">
     </form>

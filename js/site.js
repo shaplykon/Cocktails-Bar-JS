@@ -1,28 +1,23 @@
 let lastScrollTop = 0;
-
+let routes= {
+    "/": "index",
+    "/index": index,
+    "/login": login,
+    "/register": register,
+    "/detail":detail,
+    "/create":create
+};
+let scripts= {
+    "/": "js/index.js",
+    "/index": "js/index.js",
+    "/login": "js/auth.js",
+    "/register":"js/auth.js",
+    "/detail":"js/detail.js",
+    "/create":"js/create.js"
+};
 
 window.onload = () => {
-
     let root = document.getElementById("root");
-
-    let routes= {
-        "/": "index",
-        "/index": index,
-        "/login": login,
-        '/register': register
-    };
-
-
-    let scripts= {
-        "/": "js/index.js",
-        "/index": "js/index.js",
-        "/login": "/js/auth.js",
-        '/register':"js/auth.js"
-    };
-
-
-
-
     let definedRoutes = Array.from(document.getElementsByClassName("nav-link"));
 
     let navigate = e => {
@@ -33,23 +28,18 @@ window.onload = () => {
             window.history.pushState({}, '', 'error')
             root.innerHTML = `<h1 style="margin:auto auto">This route is not Defined</h1>`
         } else {
-            if(!(routes[route] === index)){
+            if(!route !== "\index"){
                 showNavbar();
             }
             else{
-                hideNavbar();
+             checkBgPosition();
             }
 
-            window.history.pushState({}, '', route)
-            root.innerHTML = routes[route]
-            const scriptSrc = scripts[route];
-            const script = document.createElement("script");
-            script.src = scriptSrc
-            root.appendChild(script);
+           displayContent(route);
         }
     }
 
-    const cards = document.getElementsByClassName("card");
+    const cards = Array.from(document.getElementsByClassName("card"));
     cards.forEach(card => {
         card.addEventListener('onclick', navigate, false)
     })
@@ -58,30 +48,34 @@ window.onload = () => {
         route.addEventListener('click', navigate, false)
     })
 
-    window.onpopstate = () => {
-        navigate(window.location.pathname);
-    }
+   displayContent();
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyBsXotNUfYiDTXl3dJS9VfrXVik33tdxAs",
-        authDomain: "cocktails-bar.firebaseapp.com",
-        projectId: "cocktails-bar",
-        storageBucket: "cocktails-bar.appspot.com",
-        messagingSenderId: "1021982495967",
-        appId: "1:1021982495967:web:e64ccf37bed108b20ac56a"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-
+    window.onpopstate = () =>{ displayContent("/index")};
 }
 
-window.addEventListener("scroll", function () {
+function checkBgPosition(){
     const bg = document.getElementById("background");
     if (isInViewport(bg) && isDownwardScrolling()) {
         showNavbar();
     } else if (isInViewport(bg) && !isDownwardScrolling()) {
         hideNavbar();
     }
+}
+
+function displayContent(path="index"){
+    let root = document.getElementById("root");
+    // const path = window.location.pathname
+
+    window.history.pushState({}, '', path)
+    root.innerHTML = routes[path]
+    const scriptSrc = scripts[path];
+    const script = document.createElement("script");
+    script.src = scriptSrc
+    root.appendChild(script);
+}
+
+window.addEventListener("scroll", function () {
+  checkBgPosition();
 });
 
 function showNavbar(){
@@ -96,7 +90,7 @@ function hideNavbar(){
 
 function isInViewport(el) {
     const position = el.getBoundingClientRect();
-    if (position.top >= 0 && position.bottom < window.innerHeight) {
+    if (position.top >= 0 && position.bottom <= window.innerHeight) {
         return true;
     }
 
@@ -113,6 +107,9 @@ function isDownwardScrolling(){
     return isDownward;
 }
 
+function  cardClick(){
+    displayContent("/detail");
+}
 
 
 

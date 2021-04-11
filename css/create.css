@@ -1,0 +1,310 @@
+input {
+    padding: 5px;
+}
+
+label {
+    font-size: 1.2em;
+}
+
+
+textarea{
+    border-radius: 25px;
+    margin: 25px;
+    padding: 10px;
+
+    height: 80%;
+    resize: none;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+    border-radius: 50px;
+}
+
+.submit-button{
+    width: 20%;
+    margin-top: 0;
+    margin-bottom: 10px;
+    transform: initial;
+    background-color: #878a8a;
+    border: 0;
+    transition: all 0.3s;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: large;
+}
+
+#coffee-name{
+    margin: 20px;
+}
+
+.submit-button:hover{
+    color: white;
+    width: 25%;
+    margin-top: 0;
+    margin-bottom: 10px;
+    transform: translate(0.1, 0.1);
+    background-color: #878a8a;
+    border: 0;
+    transition: all 0.3s;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: large;
+}
+
+input[type=text]{
+    border-radius: 50px;
+}
+
+.create-coffee-form{
+    width: 1000px;
+    height: 400px;
+    margin: 50px auto;
+    border-radius: 20px;
+}
+
+.coffee-form-block {
+    width: 1000px;
+    height: 400px;
+    margin: 50px auto;
+    border-radius: 20px;
+}
+
+.coffee-form-left {
+    display:inline-block;
+
+    float: left;
+    width: 40%;
+    background-color: #e0dede;
+    border-radius: 20px 0 0 20px;
+    height: 100%;
+
+    align-items: center;
+    text-align: center;
+}
+
+.coffee-image {
+    position: relative;
+    height: 150px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.coffee-image img {
+
+    position: relative;
+    height: 100%;
+    z-index: 10;
+}
+
+.coffee-ingredient {
+    position: absolute;
+    left: 6px;
+    top: 0;
+    height: 143px;
+    width: 109px;
+}
+
+.coffee-form-right {
+    border-radius:0  20px  20px 0 ;
+    display:inline-block;
+    background-color: #4a4a4a;
+    position: relative;
+    width: 60%;
+    height: 100%;
+    float: right ;
+    text-align: center;
+}
+
+#coffee-name {
+    width: 70%;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#coffee-value {
+    margin-top: 7px;
+    width: 20%;
+    font-size: 1.1em;
+    padding: 2px 5px;
+    text-align: center;
+}
+
+.add-ingredients-section {
+    margin-bottom: 20px;
+}
+
+.ingredients-select-list {
+    margin-bottom: 20px;
+}
+
+.ingredient-select-list-item {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.flex-ingredient-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ingredients-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 1em;
+    display: inline-block;
+    min-width: 200px;
+    text-align: center;
+    padding: 5px 5px 5px 10px;
+    border-radius: 50px;
+}
+
+.ingredient-value-input {
+    margin-left: 10px;
+    margin-right: auto;
+    text-align: center;
+    font-size: 1em;
+    display: inline-block;
+    width: 20%;
+}
+
+.remove-ingredient-button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 0.5em;
+    margin: 10px;
+}
+
+#add-ingredient-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    display: block;
+    margin: 0 10px 0 auto;
+
+}
+
+#description-textarea {
+    padding: 10px;
+    font-size: 1em;
+    width: 300px;
+    box-sizing: border-box;
+    height: 200px;
+}
+
+@media only screen
+and (max-device-width : 500px) {
+
+    :root {
+        --main-border-radius: 50px;
+    }
+
+    main {
+        padding-top: 200px;
+        width: 80%;
+    }
+
+    .coffee-form-block {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .coffee-form-left {
+        width: 100%;
+        margin: auto;
+        border-radius: var(--main-border-radius);
+        padding-bottom: 30px;
+        margin-bottom: 50px;
+    }
+
+    .coffee-image {
+        margin-left: 40px;
+        margin-bottom: 40px;
+        margin-top: 40px;
+        height: 300px;
+    }
+
+    .coffee-form-right {
+        width: 100%;
+        padding: 50px;
+        border-radius: var(--main-border-radius);
+    }
+
+    label {
+        font-size: 2.5em;
+    }
+
+    #coffee-name {
+        font-size: 2.8em;
+        padding: 10px 20px;
+        margin-bottom: 25px;
+    }
+
+    #coffee-value {
+        margin-top: 15px;
+        font-size: 2.5em;
+    }
+
+    .add-ingredients-section {
+        margin-bottom: 30px;
+    }
+
+    .ingredients-select-list {
+        margin-bottom: 30px;
+    }
+
+    .ingredient-select-list-item {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .ingredients-select {
+        padding: 10px;
+        min-width: 350px;
+        margin-right: 10px;
+    }
+
+    .ingredient-value-input {
+        font-size: 0.9em;
+        padding: 10px;
+        width: 20%;
+    }
+
+    .remove-ingredient-button {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .coffee-ingredient {
+        position: absolute;
+        left: 12px;
+        top: 0;
+        height: 285px;
+        width: 219px;
+    }
+
+    #add-ingredient-button {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5em;
+    }
+
+    #description-textarea {
+        padding: 20px;
+        font-size: 2em;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    #create-button {
+        padding: 15px;
+        font-size: 1.5em;
+    }
+}
