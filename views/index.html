@@ -28,10 +28,10 @@
     <!---------------------->
 
     <!-- Scripts imports -->
-    <script rel="script" src="../js/site.js"></script>
     <script rel="script" src="../js/auth.js"></script>
     <script rel="script" src="../js/detail.js"></script>
     <script rel="script" src="../js/create.js"></script>
+    <script rel="script" src="../js/site.js"></script>
     <!---------------------->
 
     <meta name="viewport"
@@ -42,9 +42,11 @@
 
 <nav class="header" id="header">
     <a router-link="/index" class="nav-link" data-link="ajax">Home</a>
-    <a router-link="/login" class="nav-link" data-link="ajax">Login</a>
-    <a router-link="/register" class="nav-link">Sign up</a>
-    <a router-link="/create" class="nav-link">Create</a>
+    <a router-link="/login" class="nav-link" data-link="ajax" id="login-link">Login</a>
+    <a router-link="/register" class="nav-link" id="sign-up-link">Sign up</a>
+    <a class="nav-link" id="log-out-link" onclick="logoutFunction()">Log out</a>
+    <a router-link="/create" class="nav-link" id="create-link">Create</a>
+    <div id="user-welcome-label" class="user-login">You are welcome</div>
 </nav>
 
 <section id="root">

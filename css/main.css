@@ -16,7 +16,19 @@ body, html {
     transition: all 0.4s;
 }
 
-.header a{
+.user-login{
+    visibility: hidden;
+    text-align: right;
+    display: inline;
+    margin-right: 10px;
+    font-size: xx-large;
+    color: white;
+    letter-spacing: normal;
+    position: absolute;
+    right: 0;
+}
+
+.nav-link{
     margin-right: 10px;
     font-size: xx-large;
     display: inline-block;
@@ -26,7 +38,7 @@ body, html {
     transition: all 0.3s ease-in;
 }
 
-.header a:hover{
+.nav-link:hover{
     color: bisque;
     letter-spacing: 2px;
     transition: all 0.3s ease;

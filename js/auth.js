@@ -1,15 +1,23 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyBsXotNUfYiDTXl3dJS9VfrXVik33tdxAs",
-    authDomain: "cocktails-bar.firebaseapp.com",
-    projectId: "cocktails-bar",
-    storageBucket: "cocktails-bar.appspot.com",
-    messagingSenderId: "1021982495967",
-    appId: "1:1021982495967:web:e64ccf37bed108b20ac56a",
+let auth;
+function initializeAuthentication(){
+    const firebaseConfig = {
+        apiKey: "AIzaSyBsXotNUfYiDTXl3dJS9VfrXVik33tdxAs",
+        authDomain: "cocktails-bar.firebaseapp.com",
+        projectId: "cocktails-bar",
+        storageBucket: "cocktails-bar.appspot.com",
+        messagingSenderId: "1021982495967",
+        appId: "1:1021982495967:web:e64ccf37bed108b20ac56a",
+    };
 
-};
+    firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+}
 
-firebase.initializeApp(firebaseConfig);
 
+
+function isAuthorized() {
+    return auth.currentUser !== null;
+}
 
 function loginFunction() {
     const email = document.getElementById("login");
@@ -17,10 +25,19 @@ function loginFunction() {
 
     const emailText = email.value;
     const passText = pass.value;
-    const auth = firebase.auth();
 
-    const response = auth.signInWithEmailAndPassword(emailText, passText);
-    handleAuthentication(response);
+    auth.signInWithEmailAndPassword(emailText, passText).then(function (firebaseUser) {
+        if (firebaseUser) {
+            window.history.pushState({}, "/", window.location.origin + "/");
+        }
+        showAuthenticatedControls();
+        displayContent("/index");
+    }).catch(function (e) {
+        console.log(e.message);
+        const errorField = document.getElementById("errorField");
+        errorField.innerHTML = e.message;
+    });
+
 }
 
 function registerFunction() {
@@ -35,18 +52,13 @@ function registerFunction() {
     handleAuthentication(response);
 }
 
-function handleAuthentication(response) {
-    response.then(firebaseUser => {
-        if (firebaseUser) {
-            window.history.pushState({}, "/", window.location.origin + "/");
-        }
-    })
-    response.catch(e => {
-        console.log(e.message);
-        const errorField = document.getElementById("errorField");
-        errorField.innerHTML = e.message;
+function logoutFunction(){
+    auth.signOut().then(function() {
+        hideAuthenticatedControls();
+        onNavigate("/index")
     });
 }
+
 
 function checkboxClicked() {
     const checkbox = document.getElementById("rules_agreement");
@@ -56,6 +68,24 @@ function checkboxClicked() {
     });
 }
 
+function showAuthenticatedControls() {
+    const userLabel = document.getElementById("user-welcome-label");
+    userLabel.innerHTML = "You are welcome, " + auth.currentUser.email;
+    userLabel.style.display = 'inline';
+
+    document.getElementById("log-out-link").style.display = 'inline-block';
+    document.getElementById("create-link").style.display = 'inline-block';
+    document.getElementById("login-link").style.display = 'none';
+    document.getElementById("sign-up-link").style.display = 'none';
+}
+
+function hideAuthenticatedControls() {
+    document.getElementById("log-out-link").style.display = 'none';
+    document.getElementById("user-welcome-label").style.display = 'none';
+    document.getElementById("create-link").style.display = 'none';
+    document.getElementById("login-link").style.display = 'inline-block';
+    document.getElementById("sign-up-link").style.display = 'inline-block';
+}
 
 
 

@@ -1,6 +1,6 @@
 let lastScrollTop = 0;
 let routes= {
-    "/": "index",
+    "/": index,
     "/index": index,
     "/login": login,
     "/register": register,
@@ -17,6 +17,7 @@ let scripts= {
 };
 
 window.onload = () => {
+
     let root = document.getElementById("root");
     let definedRoutes = Array.from(document.getElementsByClassName("nav-link"));
 
@@ -28,7 +29,7 @@ window.onload = () => {
             window.history.pushState({}, '', 'error')
             root.innerHTML = `<h1 style="margin:auto auto">This route is not Defined</h1>`
         } else {
-            if(!route !== "\index"){
+            if((route !== "\index")){
                 showNavbar();
             }
             else{
@@ -48,9 +49,31 @@ window.onload = () => {
         route.addEventListener('click', navigate, false)
     })
 
-   displayContent();
+    if(auth == null){
+        initializeAuthentication();
+    }
 
-    window.onpopstate = () =>{ displayContent("/index")};
+    if (isAuthorized()){
+        showAuthenticatedControls();
+    }
+    else{
+        hideAuthenticatedControls();
+    }
+
+    onNavigate(window.location.pathname);
+
+    window.onpopstate = () =>{ displayContent(window.location.pathname)};
+
+
+}
+
+const onNavigate = (pathname) => {
+    window.history.pushState(
+        {},
+        pathname,
+        window.location.origin + pathname
+    );
+    displayContent(pathname);
 }
 
 function checkBgPosition(){
@@ -62,10 +85,10 @@ function checkBgPosition(){
     }
 }
 
-function displayContent(path="index"){
+async function displayContent(path="index"){
+    showNavbar();
     let root = document.getElementById("root");
     // const path = window.location.pathname
-
     window.history.pushState({}, '', path)
     root.innerHTML = routes[path]
     const scriptSrc = scripts[path];
@@ -89,13 +112,15 @@ function hideNavbar(){
 }
 
 function isInViewport(el) {
-    const position = el.getBoundingClientRect();
-    if (position.top >= 0 && position.bottom <= window.innerHeight) {
-        return true;
-    }
+    if(el !== null){
+        const position = el.getBoundingClientRect();
+        if (position.top >= 0 && position.bottom <= window.innerHeight) {
+            return true;
+        }
 
-    if (position.top < window.innerHeight && position.bottom > 0) {
-        return true;
+        if (position.top < window.innerHeight && position.bottom > 0) {
+            return true;
+        }
     }
 }
 
