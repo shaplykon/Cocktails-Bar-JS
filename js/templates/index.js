@@ -5,9 +5,9 @@ index =
     "        <img src=\"https://sun9-5.userapi.com/impg/rn5TFWu3scG-U1M7Lgr5yvn157EwFqdxhTaCoQ/wRpZfHLgiqs.jpg?size=1440x900&quality=96&proxy=1&sign=b8fcd4d2e4a687fa21c94eff3dc4514e&type=album\"\n" +
     "             class=\"bg\" id=\"background\">\n" +
     "    </picture>" +
-    "  <main class=\"content\" id=\"content\" onclick=\"cardClick()\">\n" +
+    "  <main class=\"content\" id=\"content\" >\n" +
     "        <h1>Products</h1>\n" +
-    "        <section class=\"products\">\n" +
+    "        <section class=\"products\" id=\"products\">\n" +
     "\n" +
     "            <div class=\"card\">\n" +
     "                <h2 router-link=\"/detail\">coffee</h2>\n" +
@@ -18,37 +18,6 @@ index =
 
     "            </div>\n" +
     "\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
-    "            <div class=\"card\">\n" +
-    "\n" +
-    "            </div>\n" +
     "        </section>\n" +
     "\n" +
     "\n" +

@@ -32,11 +32,10 @@ function removeIngredient() {
 
 
 async function submitForm() {
-    let authService = firebase.auth();
     let name = document.getElementById('coffee-name').value;
     let value = document.getElementById('coffee-value').value;
     let description = document.getElementById('description-textarea').value;
-    let user = authService.user.email;
+    let user = auth.currentUser.email;
     name = name.trim().toLowerCase();
 
     let isInputValid = await validateInput(name, value, description);

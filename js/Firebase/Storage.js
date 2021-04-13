@@ -1,8 +1,5 @@
 class Storage {
     constructor() {
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
         this.database = firebase.database();
     }
 

@@ -89,6 +89,7 @@ async function displayContent(path="index"){
     showNavbar();
     let root = document.getElementById("root");
     // const path = window.location.pathname
+    populateCatalog();
     window.history.pushState({}, '', path)
     root.innerHTML = routes[path]
     const scriptSrc = scripts[path];

@@ -1,14 +1,15 @@
 let auth;
+
 function initializeAuthentication(){
-    const firebaseConfig = {
+    const   firebaseConfig = {
         apiKey: "AIzaSyBsXotNUfYiDTXl3dJS9VfrXVik33tdxAs",
         authDomain: "cocktails-bar.firebaseapp.com",
+        databaseURL: "https://cocktails-bar-default-rtdb.firebaseio.com",
         projectId: "cocktails-bar",
         storageBucket: "cocktails-bar.appspot.com",
         messagingSenderId: "1021982495967",
-        appId: "1:1021982495967:web:e64ccf37bed108b20ac56a",
+        appId: "1:1021982495967:web:e64ccf37bed108b20ac56a"
     };
-
     firebase.initializeApp(firebaseConfig);
     auth = firebase.auth();
 }
@@ -86,6 +87,8 @@ function hideAuthenticatedControls() {
     document.getElementById("login-link").style.display = 'inline-block';
     document.getElementById("sign-up-link").style.display = 'inline-block';
 }
+
+initializeAuthentication();
 
 
 
