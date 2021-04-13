@@ -3,14 +3,14 @@ class Storage {
         this.database = firebase.database();
     }
 
-    addCoffee(coffee) {
+    addCocktail(cocktail) {
         this.database.ref('coffees/').push({
-            name: coffee.name,
-            description: coffee.description,
-            createDate: coffee.createDate.toISOString().slice(0, 10),
-            addedBy: coffee.addedBy,
-            value: coffee.value,
-            ingredients: coffee.ingredients,
+            name: cocktail.name,
+            description: cocktail.description,
+            createDate: cocktail.createDate.toISOString().slice(0, 10),
+            addedBy: cocktail.addedBy,
+            value: cocktail.value,
+            ingredients: cocktail.ingredients,
         })
     }
 
@@ -18,16 +18,16 @@ class Storage {
         return (await this.database.ref('coffees/').once('value')).val();
     }
 
-    async getCoffee(id) {
+    async getCocktail(id) {
         return (await this.database.ref('coffees/' + id).once('value')).val();
     }
 
-    addMark(coffeeId, userId, mark) {
-        this.database.ref(`coffees/${coffeeId}/marks/${userId}`).set(+mark);
+    addMark(cocktailId, userId, mark) {
+        this.database.ref(`coffees/${cocktailId}/marks/${userId}`).set(+mark);
     }
 
-    addComment(coffeeId, comment) {
-        this.database.ref(`coffees/${coffeeId}/comments/`).push({
+    addComment(cocktailId, comment) {
+        this.database.ref(`coffees/${cocktailId}/comments/`).push({
                 author: comment.author,
                 text: comment.text,
                 date: comment.date.toISOString().slice(0, 10)
@@ -36,4 +36,4 @@ class Storage {
     }
 }
 
-let coffeeStorage = new Storage();
+let cocktailStorage = new Storage();

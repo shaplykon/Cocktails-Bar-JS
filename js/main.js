@@ -2,47 +2,47 @@ async function populateCatalog() {
     //let filterOption = getURLParam('filter');
     //let sortOption = getURLParam('sort');
     //setFilterTitles(filterOption, sortOption);
-    let catalog = await coffeeStorage.getCatalog();
+    let catalog = await cocktailStorage.getCatalog();
 
     let catalogArray = [];
 
-    for (let coffeeId in catalog) {
-        catalogArray.push({id: coffeeId, value: catalog[coffeeId]});
+    for (let cocktailId in catalog) {
+        catalogArray.push({id: cocktailId, value: catalog[cocktailId]});
     }
     catalogArray.reverse();
 
     //catalog = filterCatalog(filterOption, sortOption, catalog);
     catalog = catalogArray;
     let catalogDiv = document.getElementById('products');
-    for (let coffee of catalog) {
-        let coffeeNode = document.createElement("a");
-        coffeeNode.setAttribute('href', '#');
-        coffeeNode.setAttribute('onclick', `onNavigate('/detail?id=${coffee.id}'); return false;`);
+    for (let cocktail of catalog) {
+        let cocktailNode = document.createElement("a");
+        cocktailNode.setAttribute('href', '#');
+        cocktailNode.setAttribute('onclick', `onNavigate('/detail?id=${cocktail.id}'); return false;`);
 
-        let coffeeItemDiv = document.createElement("div");
-        coffeeItemDiv.classList.add('card');
+        let cocktailItemDiv = document.createElement("div");
+        cocktailItemDiv.classList.add('card');
 
         //let coffeeImageDiv = createCoffeeImageDiv(coffee.value);
         //coffeeItemDiv.appendChild(coffeeImageDiv);
 
-        let coffeeName = document.createElement("h2");
+        let cocktailName = document.createElement("h2");
         //coffeeName.classList.add('coffee-title');
 
-        coffeeName.textContent = coffee.value.name.toUpperCase();
-        coffeeItemDiv.appendChild(coffeeName);
+        cocktailName.textContent = cocktail.value.name.toUpperCase();
+        cocktailItemDiv.appendChild(cocktailName);
 
         //let ratingDiv = createRatingDiv(coffee.value);
         //coffeeItemDiv.appendChild(ratingDiv);
-        coffeeNode.appendChild(coffeeItemDiv);
-        catalogDiv.append(coffeeNode);
+        cocktailNode.appendChild(cocktailItemDiv);
+        catalogDiv.append(cocktailNode);
     }
 }
 
 function filterCatalog(filterOption, sortOption, catalog) {
     let catalogArray = [];
 
-    for (let coffeeId in catalog) {
-        catalogArray.push({id: coffeeId, value: catalog[coffeeId]});
+    for (let cocktailId in catalog) {
+        catalogArray.push({id: cocktailId, value: catalog[cocktailId]});
     }
     catalogArray.reverse();
 

@@ -1,4 +1,4 @@
-class Coffee {
+class Cocktail {
     constructor(name, addedBy, value, description, ingredients) {
         this.description = description;
         this.name = name;

@@ -60,11 +60,25 @@ window.onload = () => {
         hideAuthenticatedControls();
     }
 
-    onNavigate(window.location.pathname);
+    onNavigate(window.location);
 
     window.onpopstate = () =>{ displayContent(window.location.pathname)};
 
 
+}
+
+function getPath(pathname) {
+    let startParamsIndex = pathname.indexOf('?');
+    if (startParamsIndex !== -1) {
+        return pathname.slice(0, startParamsIndex);
+    }
+    return pathname;
+}
+
+function getParams(param) {
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    return urlParams.get(param);
 }
 
 const onNavigate = (pathname) => {
@@ -85,13 +99,21 @@ function checkBgPosition(){
     }
 }
 
-async function displayContent(path="index"){
+async function displayContent(pathname="index"){
     showNavbar();
     let root = document.getElementById("root");
     // const path = window.location.pathname
-    populateCatalog();
-    window.history.pushState({}, '', path)
-    root.innerHTML = routes[path]
+
+    let path = getPath(pathname);
+    window.history.pushState({}, '', pathname);
+    root.innerHTML = routes[path];
+
+    if(path === '/index'){
+        populateCatalog();
+    }
+    if(path === '/detail'){
+        populateDetail(getParams("id"))
+    }
     const scriptSrc = scripts[path];
     const script = document.createElement("script");
     script.src = scriptSrc

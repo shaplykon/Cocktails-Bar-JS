@@ -64,7 +64,7 @@ async function submitForm() {
     }
 
     let coffee = new Coffee(name.trim().toLowerCase(), user, value, description, ingredientsList);
-    coffeeStorage.addCoffee(coffee);
+    cocktailStorage.addCocktail(coffee);
     onNavigate('/');
 }
 
