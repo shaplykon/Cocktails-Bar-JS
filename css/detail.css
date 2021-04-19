@@ -30,6 +30,16 @@ body, html {
 
 }
 
+.info-section{
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    color: green;
+    display: flex;
+    margin-left: 10px;
+}
+
 .detail-card h3{
     font-size: 30px;
     color: white;
