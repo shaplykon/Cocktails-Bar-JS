@@ -16,7 +16,7 @@ let scripts= {
     "/create":"js/create.js"
 };
 
-window.onload = () => {
+window.onload = async () => {
 
     let root = document.getElementById("root");
     let definedRoutes = Array.from(document.getElementsByClassName("nav-link"));
@@ -29,14 +29,15 @@ window.onload = () => {
             window.history.pushState({}, '', 'error')
             root.innerHTML = `<h1 style="margin:auto auto">This route is not Defined</h1>`
         } else {
-            if((route !== "\index")){
+            if ((route !== "/index")) {
+                showNavbar();
+            } else {
+                //hideNavbar();
                 showNavbar();
             }
-            else{
-             checkBgPosition();
-            }
 
-           displayContent(route);
+            displayContent(route).then(r => {
+            });
         }
     }
 
@@ -49,22 +50,30 @@ window.onload = () => {
         route.addEventListener('click', navigate, false)
     })
 
-    if(auth == null){
+    if (auth == null) {
         initializeAuthentication();
-    }
-
-    if (isAuthorized()){
-        showAuthenticatedControls();
-    }
-    else{
-        hideAuthenticatedControls();
     }
 
     onNavigate(window.location);
 
-    window.onpopstate = () =>{ displayContent(window.location.pathname)};
+    window.onpopstate = () => {
+        displayContent(window.location.pathname).then(r => {
+        })
+    };
 
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            showAuthenticatedControls();
+        } else {
+            hideAuthenticatedControls();
+        }
+    });
 
+    if (await isAuthorized()) {
+        showAuthenticatedControls();
+    } else {
+        hideAuthenticatedControls();
+    }
 }
 
 function getPath(pathname) {
@@ -87,7 +96,7 @@ const onNavigate = (pathname) => {
         pathname,
         window.location.origin + pathname
     );
-    displayContent(pathname);
+    displayContent(pathname).then(r => {});
 }
 
 function checkBgPosition(){
@@ -100,7 +109,8 @@ function checkBgPosition(){
 }
 
 async function displayContent(pathname="index"){
-    showNavbar();
+    window.scrollTo(0, 0);
+
     let root = document.getElementById("root");
     // const path = window.location.pathname
 
@@ -109,10 +119,15 @@ async function displayContent(pathname="index"){
     root.innerHTML = routes[path];
 
     if(path === '/index'){
-        populateCatalog();
+        addScroll();
+        await populateCatalog();
+    }
+    else{
+        removeScroll();
     }
     if(path === '/detail'){
-        populateDetail(getParams("id"))
+
+        await populateDetail(getParams("id"))
     }
     const scriptSrc = scripts[path];
     const script = document.createElement("script");
@@ -156,7 +171,17 @@ function isDownwardScrolling(){
 }
 
 function  cardClick(){
-    displayContent("/detail");
+    displayContent("/detail").then(r => {});
+}
+
+function addScroll(){
+    let bg = document.getElementById("bg");
+
+}
+
+
+function removeScroll(){
+
 }
 
 

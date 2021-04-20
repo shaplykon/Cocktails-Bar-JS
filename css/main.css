@@ -47,7 +47,7 @@ body, html {
 
 /* FOOTER STYLES*/
 .footer {
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
     width: 100%;
     overflow: hidden;
     background-color: black;
@@ -153,7 +153,7 @@ body, html {
 /* END RATE BLOCK STYLES*/
 
 .anchor{
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
     height: 80px;
 }
 

@@ -1,6 +1,6 @@
 body, html {
     height: 100%;
-    scroll-snap-type: y mandatory;
+    /* scroll-snap-type: y mandatory; */
 }
 
 .detail {
@@ -11,7 +11,7 @@ body, html {
 }
 
 .anchor{
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
     height: 80px;
 }
 
@@ -126,3 +126,66 @@ input[type=submit]{
     border-radius: 20px;
     font-size: large;
 }
+
+input[type=submit]:hover{
+    transform: scale(1.1, 1.1);
+    transition: all 0.3s;
+    background-color: #4d4e4e;
+    color: white;
+}
+
+
+.comment{
+    margin: 10px;
+}
+
+.author {
+    display: block;
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 700;
+}
+.metadata {
+    display: block;
+    color: #000;
+    font-size: 1rem;
+}
+.title-comments {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.5rem;
+    color: rgba(0,0,0,.87);
+    margin-bottom: 1rem;
+    padding-bottom: .25rem;
+    border-bottom: 1px solid rgba(34,36,38,.15);
+}
+
+.comment-text{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.comment img {
+    width: 40px;
+    height: 40px;
+}
+
+.delete-comment{
+    width: 100px;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transform: initial;
+    background-color: red;
+    border: 0;
+    transition: all 0.3s;
+    color: white;
+    border-radius: 20px;
+}
+.delete-comment:hover{
+    transform: scale(1.1, 1.1);
+    transition: all 0.3s;
+    background-color: #7e0a0a;
+    color: white;
+}
+

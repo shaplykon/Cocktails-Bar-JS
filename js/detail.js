@@ -2,8 +2,12 @@ function leaveComment(){
     let commentText = document.getElementById("comment").value;
     let author = auth.currentUser.email;
     let comment = new Comments(author, commentText, new Date());
-    let coffeeId = getParams('id');
-    cocktailStorage.addComment(coffeeId, comment);
+    let cocktailId = getParams('id');
+    cocktailStorage.addComment(cocktailId, comment);
+
+    document.getElementById("comment").value = "";
+
+    populateComments(cocktailId).then(r => {});
 }
 
 async function populateDetail(id){
@@ -36,4 +40,87 @@ async function populateDetail(id){
     date.innerHTML = "Date : " + cocktail.createDate;
     infoDiv.appendChild(date);
 
+    await populateComments(id);
 }
+
+async function populateComments(cocktailId) {
+    let rootDiv = document.getElementById("root");
+    let commentsDiv = document.getElementById("comments");
+
+    if(commentsDiv !== null){
+        rootDiv.removeChild(commentsDiv);
+    }
+
+    let cocktail = await cocktailStorage.getCocktail(cocktailId);
+
+    let comments = cocktail.comments;
+
+    let commentsList = [];
+
+    for(let commentId in comments){
+        commentsList.push({id: commentId, author: comments[commentId].author, text: comments[commentId].text, date: comments[commentId].date} );
+    }
+
+
+    if (commentsList.length > 0) {
+        let commentsDiv = document.createElement("div");
+        commentsDiv.classList.add("comments");
+        commentsDiv.id = "comments";
+        let commentsTitleDiv = document.createElement("h3");
+        commentsTitleDiv.classList.add("title-comments");
+        commentsTitleDiv.innerText = "Comments: " + commentsList.length;
+
+        commentsDiv.appendChild(commentsTitleDiv);
+
+
+        for (let i = 0; i < commentsList.length; i++) {
+            let commentDiv = document.createElement("div");
+            commentDiv.classList.add("comment");
+
+            let imageDiv = document.createElement("img");
+            imageDiv.src = "http://www.gravatar.com/avatar/" + MD5(commentsList[i].author) +
+                "?d=https://www.freeiconspng.com/uploads/flat-face-icon-23.png";
+
+            let authorDiv = document.createElement("div");
+            authorDiv.classList.add("author");
+            authorDiv.innerHTML = commentsList[i].author
+
+            let dataDiv = document.createElement("div");
+            dataDiv.classList.add("metadata");
+
+            let dateDiv = document.createElement("span");
+            dateDiv.classList.add("time");
+            dateDiv.innerHTML = "Date: " + commentsList[i].date;
+            dataDiv.appendChild(dateDiv);
+
+            let commentTextDiv = document.createElement("div");
+            commentTextDiv.classList.add("comment-text");
+            commentTextDiv.innerHTML = commentsList[i].text;
+
+            commentDiv.appendChild(imageDiv);
+            commentDiv.appendChild(authorDiv);
+            commentDiv.appendChild(dataDiv);
+
+            if(auth.currentUser !== null){
+                if (auth.currentUser.email === commentsList[i].author){
+                    let deleteDiv = document.createElement("button");
+                    deleteDiv.classList.add("delete-comment");
+                    deleteDiv.onclick = function () {deleteComment(commentsList.id)}
+                    deleteDiv.innerHTML = "Delete";
+                    commentDiv.appendChild(deleteDiv);
+                }
+            }
+            commentDiv.appendChild(commentTextDiv);
+            commentsDiv.appendChild(commentDiv);
+
+        }
+        rootDiv.appendChild(commentsDiv);
+    }
+}
+
+function deleteComment(commentId){
+    alert(commentId);
+}
+
+
+

@@ -1,5 +1,5 @@
 .bg {
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
     /* The image used */
     background-image: url("https://sun9-5.userapi.com/impg/rn5TFWu3scG-U1M7Lgr5yvn157EwFqdxhTaCoQ/wRpZfHLgiqs.jpg?size=1440x900&quality=96&proxy=1&sign=b8fcd4d2e4a687fa21c94eff3dc4514e&type=album");
     /* Full height */
@@ -14,7 +14,7 @@
 }
 
 .content {
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
     scroll-behavior: smooth;
     padding-top: 80px;
 }
@@ -48,8 +48,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /*text-align: center;*/
-    /*padding: 10px;*/
     transition: all 0.1s;
     box-shadow: 0 0 7px rgb(55, 64, 64)
 }

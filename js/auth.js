@@ -14,9 +14,7 @@ function initializeAuthentication(){
     auth = firebase.auth();
 }
 
-
-
-function isAuthorized() {
+async function isAuthorized() {
     return auth.currentUser !== null;
 }
 
@@ -49,8 +47,17 @@ function registerFunction() {
     const passText = pass.value;
     const auth = firebase.auth();
 
-    const response = auth.createUserWithEmailAndPassword(emailText, passText);
-    handleAuthentication(response);
+     auth.createUserWithEmailAndPassword(emailText, passText).then(function (firebaseUser) {
+        if (firebaseUser) {
+            window.history.pushState({}, "/", window.location.origin + "/");
+        }
+        showAuthenticatedControls();
+        displayContent("/index");
+    }).catch(function (e) {
+        console.log(e.message);
+        const errorField = document.getElementById("errorField");
+        errorField.innerHTML = e.message;
+    });
 }
 
 function logoutFunction(){
@@ -59,7 +66,6 @@ function logoutFunction(){
         onNavigate("/index")
     });
 }
-
 
 function checkboxClicked() {
     const checkbox = document.getElementById("rules_agreement");
@@ -89,6 +95,3 @@ function hideAuthenticatedControls() {
 }
 
 initializeAuthentication();
-
-
-
