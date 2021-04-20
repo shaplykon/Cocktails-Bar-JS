@@ -1,4 +1,10 @@
 async function populateCatalog() {
+    let root = document.getElementById("root");
+    let loadRing = document.createElement("img");
+    loadRing.src = "https://psv4.userapi.com/c536236/u138605199/docs/d35/1556056e9dde/loading.gif?extra=IwVbtJqKL3Rs3WXyKVHFYVIDHkrmzb-QFLYrcjqS7hSUf58TttV8kOain74A5vXiT4tJ3TTDIFTBC2e0khhmCtO7gGq86VNnOKd5Z3LBIQb63LJU5KQesbNJPAV5wWVK48cxrzRK5Jv9UuYTxkQ7Gjyz";
+    loadRing.classList.add("load-ring");
+
+    root.appendChild(loadRing);
     //let filterOption = getURLParam('filter');
     //let sortOption = getURLParam('sort');
     //setFilterTitles(filterOption, sortOption);
@@ -13,7 +19,9 @@ async function populateCatalog() {
 
     //catalog = filterCatalog(filterOption, sortOption, catalog);
     catalog = catalogArray;
-    let catalogDiv = document.getElementById('products');
+    let catalogDiv = document.createElement("section");
+    catalogDiv.classList.add("products");
+    catalogDiv.id = "products";
     for (let cocktail of catalog) {
         let cocktailNode = document.createElement("a");
         cocktailNode.setAttribute('href', '#');
@@ -36,6 +44,16 @@ async function populateCatalog() {
         cocktailNode.appendChild(cocktailItemDiv);
         catalogDiv.append(cocktailNode);
     }
+    root.removeChild(loadRing);
+    root.appendChild(catalogDiv);
+}
+
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+        currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
 }
 
 function filterCatalog(filterOption, sortOption, catalog) {

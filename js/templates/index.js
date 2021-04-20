@@ -7,18 +7,6 @@ index =
     // "    </picture>" +
     "  <main class=\"content\" id=\"content\" >\n" +
     "        <h1>Products</h1>\n" +
-    "        <section class=\"products\" id=\"products\">\n" +
-    "\n" +
-    "            <div class=\"card\">\n" +
-    "                <h2 router-link=\"/detail\">coffee</h2>\n" +
-    "\n" +
-    "                <div class=\"card-image\">\n" +
-    "                    <img src=\"https://clipart-best.com/img/cocktail/cocktail-clip-art-6.png\">\n" +
-    "                </div>\n" +
-
-    "            </div>\n" +
-    "\n" +
-    "        </section>\n" +
     "\n" +
     "\n" +
     "    </main>";

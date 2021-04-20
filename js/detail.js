@@ -12,6 +12,7 @@ function leaveComment(){
 
 async function populateDetail(id){
 
+
     let cocktail = await cocktailStorage.getCocktail(id);
 
     let name = cocktail.name;
@@ -45,11 +46,7 @@ async function populateDetail(id){
 
 async function populateComments(cocktailId) {
     let rootDiv = document.getElementById("root");
-    let commentsDiv = document.getElementById("comments");
-
-    if(commentsDiv !== null){
-        rootDiv.removeChild(commentsDiv);
-    }
+    let prevCommentsDiv = document.getElementById("comments");
 
     let cocktail = await cocktailStorage.getCocktail(cocktailId);
 
@@ -61,6 +58,7 @@ async function populateComments(cocktailId) {
         commentsList.push({id: commentId, author: comments[commentId].author, text: comments[commentId].text, date: comments[commentId].date} );
     }
 
+    commentsList.reverse();
 
     if (commentsList.length > 0) {
         let commentsDiv = document.createElement("div");
@@ -105,7 +103,8 @@ async function populateComments(cocktailId) {
                 if (auth.currentUser.email === commentsList[i].author){
                     let deleteDiv = document.createElement("button");
                     deleteDiv.classList.add("delete-comment");
-                    deleteDiv.onclick = function () {deleteComment(commentsList.id)}
+                    deleteDiv.addEventListener("click",
+                        function() { deleteComment(cocktailId,commentsList[i].id); }, false);
                     deleteDiv.innerHTML = "Delete";
                     commentDiv.appendChild(deleteDiv);
                 }
@@ -114,12 +113,16 @@ async function populateComments(cocktailId) {
             commentsDiv.appendChild(commentDiv);
 
         }
+        if(prevCommentsDiv !== null){
+            rootDiv.removeChild(prevCommentsDiv);
+        }
         rootDiv.appendChild(commentsDiv);
     }
 }
 
-function deleteComment(commentId){
-    alert(commentId);
+function deleteComment(cocktailId, commentId){
+    cocktailStorage.deleteComment(cocktailId, commentId)
+        .then(() => populateComments(cocktailId));
 }
 
 

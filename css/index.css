@@ -80,3 +80,9 @@ body{
     background-color: white;
 }
 /* END PRODUCT CARDS STYLES*/
+
+.load-ring{
+    margin-left: 50%;
+    margin-top: 8.5%;
+    margin-bottom: 8.5%;
+}

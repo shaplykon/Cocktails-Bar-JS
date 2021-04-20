@@ -34,6 +34,12 @@ class Storage {
             }
         );
     }
+
+    async deleteComment(cocktailId, commentId){
+        this.database.ref(`coffees/${cocktailId}/comments/${commentId}`).remove();
+    }
 }
+
+
 
 let cocktailStorage = new Storage();
