@@ -13,8 +13,8 @@ detail = "\n" +
     "    </section>\n" +
     "\n" +
     "    <div class=\"detail-info\">\n" +
-    "        <p id='value-label' >Volume: 500 ml</p>\n" +
-    "        <p id='value-label' style='margin-bottom: 0'>Ingredients:</p>\n" +
+    "        <p id='value-label' ></p>\n" +
+    "        <p id='value-label' ></p>\n" +
     "        <section id='ingredients-section'></section>\n" +
     "        <section class='info-section' id='info-section'></section>\n" +
     "    </div>\n" +

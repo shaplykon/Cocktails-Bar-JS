@@ -76,12 +76,18 @@ function checkboxClicked() {
 }
 
 function showAuthenticatedControls() {
-    const userLabel = document.getElementById("user-welcome-label");
-    userLabel.innerHTML = "You are welcome, " + auth.currentUser.email;
+    let userLabel = document.getElementById("user-welcome-label");
+    userLabel.innerHTML = auth.currentUser.email;
     userLabel.style.display = 'inline';
 
+    let imageDiv = document.getElementById("user-login-img");
+
+    imageDiv.src = "http://www.gravatar.com/avatar/" + MD5(auth.currentUser.email) +
+        "?d=https://www.freeiconspng.com/uploads/flat-face-icon-23.png";
+    imageDiv.style.display = 'inline';
     document.getElementById("log-out-link").style.display = 'inline-block';
     document.getElementById("create-link").style.display = 'inline-block';
+    document.getElementById("index-link").style.display = 'inline-block';
     document.getElementById("login-link").style.display = 'none';
     document.getElementById("sign-up-link").style.display = 'none';
 }
@@ -90,6 +96,8 @@ function hideAuthenticatedControls() {
     document.getElementById("log-out-link").style.display = 'none';
     document.getElementById("user-welcome-label").style.display = 'none';
     document.getElementById("create-link").style.display = 'none';
+    document.getElementById("user-login-img").style.display = 'none';
+    document.getElementById("index-link").style.display = 'inline-block';
     document.getElementById("login-link").style.display = 'inline-block';
     document.getElementById("sign-up-link").style.display = 'inline-block';
 }

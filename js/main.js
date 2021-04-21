@@ -48,15 +48,7 @@ async function populateCatalog() {
     root.appendChild(catalogDiv);
 }
 
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-}
-
-function filterCatalog(filterOption, sortOption, catalog) {
+function filterCatalog(sortOption, catalog) {
     let catalogArray = [];
 
     for (let cocktailId in catalog) {
@@ -64,19 +56,10 @@ function filterCatalog(filterOption, sortOption, catalog) {
     }
     catalogArray.reverse();
 
-    if (filterOption == null && sortOption == null) {
-        return catalogArray;
-    }
-
-    if (filterOption == 'top') {
-        catalogArray.sort((a, b) => getCoffeeRating(b.value) - getCoffeeRating(a.value));
-        catalogArray = catalogArray.slice(0, 10);
-    }
-
     switch (sortOption) {
         case 'name':
             catalogArray.sort(function(a, b) {
-                var nameA = a.value.name.toLowerCase(), nameB = b.value.name.toLowerCase();
+                let nameA = a.value.name.toLowerCase(), nameB = b.value.name.toLowerCase();
                 if (nameA < nameB) {
                     return -1;
                 }
@@ -97,42 +80,11 @@ function filterCatalog(filterOption, sortOption, catalog) {
     return catalogArray;
 }
 
-function setFilterTitles(filterOption, sortOption) {
+function setSortFilter(sortOption) {
+    let url = `/index?sort=${sortOption}`;
+    let filterOption = getParams('filter');
     if (filterOption != null) {
-        let filterSelect = document.querySelector('.filter-select');
-        switch (filterOption.toLowerCase()) {
-            case 'all':
-            case 'top':
-                filterSelect.textContent = filterOption.toUpperCase();
-                break;
-        }
-    }
-    if (sortOption != null) {
-        let sortSelect = document.querySelector('.sort-select');
-        switch (sortOption.toLowerCase()) {
-            case 'name':
-            case 'rating':
-            case 'date':
-                sortSelect.textContent = sortOption.toUpperCase();
-                break;
-        }
-    }
-}
-
-function changeFilter(filterOption) {
-    let url = `/catalog?filter=${filterOption}`;
-    let sortOption = getURLParam('sort');
-    if (sortOption != null) {
-        url += `&sort=${sortOption}`;
-    }
-    onNavigate(url);
-}
-
-function changeSort(sortOption) {
-    let url = `/catalog?sort=${sortOption}`;
-    let filterOption = getURLParam('filter');
-    if (filterOption != null) {
-        url += `&filter=${filterOption}`;
+        url += `&sort=${filterOption}`;
     }
     onNavigate(url);
 }

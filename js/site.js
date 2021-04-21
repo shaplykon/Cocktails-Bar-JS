@@ -29,15 +29,8 @@ window.onload = async () => {
             window.history.pushState({}, '', 'error')
             root.innerHTML = `<h1 style="margin:auto auto">This route is not Defined</h1>`
         } else {
-            if ((route !== "/index")) {
-                showNavbar();
-            } else {
-                //hideNavbar();
-                showNavbar();
-            }
-
-            displayContent(route).then(r => {
-            });
+            showNavbar();
+            displayContent(route).then(() => { });
         }
     }
 
@@ -54,12 +47,11 @@ window.onload = async () => {
         initializeAuthentication();
     }
 
-    onNavigate(window.location);
-
-    window.onpopstate = () => {
-        displayContent(window.location.pathname).then(r => {
-        })
-    };
+    if (auth.currentUser !== null) {
+        showAuthenticatedControls();
+    } else {
+        hideAuthenticatedControls();
+    }
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -69,11 +61,16 @@ window.onload = async () => {
         }
     });
 
-    if (await isAuthorized()) {
-        showAuthenticatedControls();
-    } else {
-        hideAuthenticatedControls();
-    }
+
+
+    onNavigate(window.location);
+
+    window.onpopstate = () => {
+        displayContent(window.location.pathname).then(r => {
+        })
+    };
+
+
 }
 
 function getPath(pathname) {

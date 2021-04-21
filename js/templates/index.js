@@ -7,6 +7,14 @@ index =
     // "    </picture>" +
     "  <main class=\"content\" id=\"content\" >\n" +
     "        <h1>Products</h1>\n" +
+    "    <div class=\"dropdown\">\n" +
+    "        <button class=\"dropbtn\">Filters</button>\n" +
+    "        <div class=\"dropdown-content\">\n" +
+    "            <a href=\"\" onclick=\"setSortFilter('date')\">Date</a>\n" +
+    "            <a href=\"\" onclick=\"setSortFilter('name')\">Name</a>\n" +
+    "            <a href=\"\" onclick=\"setSortFilter('rating')\">Rating</a>\n" +
+    "        </div>\n" +
+    "    </div>"+
     "\n" +
     "\n" +
     "    </main>";

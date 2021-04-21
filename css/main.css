@@ -5,6 +5,7 @@ body, html {
 }
 /* HEADER STYLES*/
 .header {
+    background-color: black;
     z-index: 1;
     vertical-align: middle;
     position: fixed;
@@ -17,25 +18,36 @@ body, html {
 }
 
 .user-login{
-    visibility: hidden;
     text-align: right;
-    display: inline;
+    display: none;
     margin-right: 10px;
-    font-size: xx-large;
+    font-size: large;
     color: white;
     letter-spacing: normal;
     position: absolute;
-    right: 0;
+    right: 55px;
+
+}
+
+.user-login-img{
+    width: 50px;
+    height: 50px;
+    display: none;
+    top: 15px;
+    right: 5px;
+    position: fixed;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .nav-link{
     margin-right: 10px;
     font-size: xx-large;
-    display: inline-block;
     color: white;
     text-decoration: none;
     letter-spacing: normal;
     transition: all 0.3s ease-in;
+    display: none;
 }
 
 .nav-link:hover{
@@ -52,6 +64,7 @@ body, html {
     overflow: hidden;
     background-color: black;
     text-align: center;
+    margin-bottom: 0;
 }
 
 .footer .about, .contacts, .info h3{
