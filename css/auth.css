@@ -1,5 +1,5 @@
 .auth-block{
-    margin: 0 auto 50px;
+    margin: 90px auto 50px;
     width: 40%;
     height: 50%;
     text-align: center;
@@ -12,7 +12,7 @@
 
 }
 
-input[type=text] {
+.auth-block input[type=text] {
     font-size: large;
     width: 60%;
     padding: 12px 20px;
@@ -23,19 +23,36 @@ input[type=text] {
     transition: all 0.3s;
 }
 
-input[type=text]:focus {
+.auth-block input[type=text]:focus {
     transform: scale(1.05, 1.05);
     transition: all 0.2s;
     border: 2px solid blue;
 }
 
-label{
+.auth-block input[type=password] {
+    font-size: large;
+    width: 60%;
+    padding: 12px 20px;
+    margin:3%  20% 3% 20%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transform: initial;
+    transition: all 0.3s;
+}
+
+.auth-block input[type=password]:focus {
+    transform: scale(1.05, 1.05);
+    transition: all 0.2s;
+    border: 2px solid blue;
+}
+
+.auth-block label{
     font-size: xx-large;
     width: 100%;
 }
 
 
-input[type=button]{
+.auth-block input[type=button]{
     width: 60%;
     margin: 20px 40px 40px 40px;
     transform: initial;
@@ -48,7 +65,7 @@ input[type=button]{
     color: white;
 }
 
-input[type=button]:hover:enabled{
+.auth-block input[type=button]:hover:enabled{
     transform: scale(1.1, 1.1);
     transition: all 0.3s;
     background-color: #4d4e4e;

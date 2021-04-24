@@ -1,44 +1,41 @@
-async function populateCatalog() {
+async function populateCatalog(search = false) {
     let root = document.getElementById("root");
-    let loadRing = document.createElement("img");
-    loadRing.src = "https://psv4.userapi.com/c536236/u138605199/docs/d35/1556056e9dde/loading.gif?extra=IwVbtJqKL3Rs3WXyKVHFYVIDHkrmzb-QFLYrcjqS7hSUf58TttV8kOain74A5vXiT4tJ3TTDIFTBC2e0khhmCtO7gGq86VNnOKd5Z3LBIQb63LJU5KQesbNJPAV5wWVK48cxrzRK5Jv9UuYTxkQ7Gjyz";
-    loadRing.classList.add("load-ring");
-
-    root.appendChild(loadRing);
 
     if(catalogArray.length === 0){
-        await updateCatalog();
+        if(!search){
+            await updateCatalog();
+        }
     }
 
+        let catalogDiv = document.createElement("section");
+        catalogDiv.classList.add("products");
+        catalogDiv.id = "products";
+
+        for (let cocktail of catalogArray) {
+            let cocktailNode = document.createElement("a");
+            cocktailNode.setAttribute('href', '#');
+            cocktailNode.setAttribute('onclick', `onNavigate('/detail?id=${cocktail.id}'); return false;`);
+
+            let cocktailItemDiv = document.createElement("div");
+            cocktailItemDiv.classList.add('card');
+
+            //let coffeeImageDiv = createCoffeeImageDiv(coffee.value);
+            //coffeeItemDiv.appendChild(coffeeImageDiv);
+
+            let cocktailName = document.createElement("h2");
+            //coffeeName.classList.add('coffee-title');
+
+            cocktailName.textContent = cocktail.value.name.toUpperCase();
+            cocktailItemDiv.appendChild(cocktailName);
+
+            //let ratingDiv = createRatingDiv(coffee.value);
+            //coffeeItemDiv.appendChild(ratingDiv);
+            cocktailNode.appendChild(cocktailItemDiv);
+            catalogDiv.append(cocktailNode);
+        }
+        root.appendChild(catalogDiv);
 
 
-    let catalogDiv = document.createElement("section");
-    catalogDiv.classList.add("products");
-    catalogDiv.id = "products";
-    for (let cocktail of catalogArray) {
-        let cocktailNode = document.createElement("a");
-        cocktailNode.setAttribute('href', '#');
-        cocktailNode.setAttribute('onclick', `onNavigate('/detail?id=${cocktail.id}'); return false;`);
-
-        let cocktailItemDiv = document.createElement("div");
-        cocktailItemDiv.classList.add('card');
-
-        //let coffeeImageDiv = createCoffeeImageDiv(coffee.value);
-        //coffeeItemDiv.appendChild(coffeeImageDiv);
-
-        let cocktailName = document.createElement("h2");
-        //coffeeName.classList.add('coffee-title');
-
-        cocktailName.textContent = cocktail.value.name.toUpperCase();
-        cocktailItemDiv.appendChild(cocktailName);
-
-        //let ratingDiv = createRatingDiv(coffee.value);
-        //coffeeItemDiv.appendChild(ratingDiv);
-        cocktailNode.appendChild(cocktailItemDiv);
-        catalogDiv.append(cocktailNode);
-    }
-    root.removeChild(loadRing);
-    root.appendChild(catalogDiv);
 }
 
 function sortCatalog(sortOption) {
@@ -72,7 +69,7 @@ function sortCatalog(sortOption) {
 
 function setSortFilter(sortOption) {
     let url = `/index?sort=${sortOption}`;
-    displayContent(url);
+    displayContent(url, false, document.getElementById("search-field").value);
 }
 
 async function updateCatalog() {
@@ -83,6 +80,7 @@ async function updateCatalog() {
     }
     catalogArray.reverse();
 }
+
 function createRatingDiv(coffee) {
     let ratingDiv = document.createElement("div");
     ratingDiv.classList.add('grid-item-rating');
@@ -98,5 +96,23 @@ function createRatingDiv(coffee) {
     return ratingDiv;
 }
 
+function search() {
+    let searchBar = document.getElementById("search-field");
+    let searchText = searchBar.value;
+
+    let searchResults = [];
+    updateCatalog().then(() => {});
+
+    if (searchText !== '') {
+        for (let cocktail of catalogArray) {
+            if (cocktail.value.name.indexOf(searchText) !== -1) {
+                searchResults.push(cocktail);
+            }
+        }
+        catalogArray = searchResults;
+    }
+
+    displayContent('/index', true, searchText);
+}
 populateCatalog().then(() => {});
 let catalogArray = [];

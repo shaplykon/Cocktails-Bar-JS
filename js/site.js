@@ -20,6 +20,7 @@ window.onload = async () => {
         displayContent(window.location.pathname, true).then(() => { })
     };
 
+
     let root = document.getElementById("root");
     let definedRoutes = Array.from(document.getElementsByClassName("nav-link"));
 
@@ -88,7 +89,7 @@ const onNavigate = (pathname) => {
     displayContent(pathname).then(() => {});
 }
 
-async function displayContent(pathname="index", pop = false){
+async function displayContent(pathname="index", pop = false, searchText = ''){
     window.scrollTo(0, 0);
 
     let root = document.getElementById("root");
@@ -100,6 +101,16 @@ async function displayContent(pathname="index", pop = false){
     root.innerHTML = routes[path];
 
     if(path === '/index'){
+        if(searchText !== ''){
+            let searchBar = document.getElementById("search-field");
+            searchBar.value = searchText;
+            searchBar.focus();
+            await populateCatalog(true);
+        }
+        else{
+            await populateCatalog();
+        }
+
         if(window.location.search.indexOf("sort") !== -1){
             sortCatalog(getParams("sort"));
         }
@@ -107,7 +118,7 @@ async function displayContent(pathname="index", pop = false){
             sortCatalog("date");
         }
 
-        await populateCatalog();
+
     }
 
     if(path === '/detail'){
