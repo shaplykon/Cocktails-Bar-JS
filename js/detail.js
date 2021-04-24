@@ -7,12 +7,10 @@ function leaveComment(){
 
     document.getElementById("comment").value = "";
 
-    populateComments(cocktailId).then(r => {});
+    populateComments(cocktailId).then(() => {});
 }
 
 async function populateDetail(id){
-
-
     let cocktail = await cocktailStorage.getCocktail(id);
 
     let name = cocktail.name;

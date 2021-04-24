@@ -63,9 +63,11 @@ async function submitForm() {
         ingredientsList.push(new Ingredient(name, value));
     }
 
-    let coffee = new Coffee(name.trim().toLowerCase(), user, value, description, ingredientsList);
+    let coffee = new Cocktail(name.trim().toLowerCase(), user, value, description, ingredientsList);
     cocktailStorage.addCocktail(coffee);
-    onNavigate('/');
+    await updateCatalog().then(() => {
+        onNavigate('/index')
+    });
 }
 
 async function validateInput(name, value, description) {
@@ -83,7 +85,7 @@ async function validateInput(name, value, description) {
         return false;
     }
 
-    let coffees = await coffeeStorage.getCatalog();
+    let coffees = await cocktailStorage.getCatalog();
     for (let id in coffees) {
         if (coffees[id].name === name) {
             alert ('Name already exists.');

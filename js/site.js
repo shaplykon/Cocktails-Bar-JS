@@ -1,4 +1,3 @@
-let lastScrollTop = 0;
 let routes= {
     "/": index,
     "/index": index,
@@ -17,6 +16,9 @@ let scripts= {
 };
 
 window.onload = async () => {
+    window.onpopstate = () => {
+        displayContent(window.location.pathname, true).then(() => { })
+    };
 
     let root = document.getElementById("root");
     let definedRoutes = Array.from(document.getElementsByClassName("nav-link"));
@@ -29,7 +31,6 @@ window.onload = async () => {
             window.history.pushState({}, '', 'error')
             root.innerHTML = `<h1 style="margin:auto auto">This route is not Defined</h1>`
         } else {
-            showNavbar();
             displayContent(route).then(() => { });
         }
     }
@@ -61,16 +62,7 @@ window.onload = async () => {
         }
     });
 
-
-
     onNavigate(window.location);
-
-    window.onpopstate = () => {
-        displayContent(window.location.pathname).then(r => {
-        })
-    };
-
-
 }
 
 function getPath(pathname) {
@@ -93,93 +85,39 @@ const onNavigate = (pathname) => {
         pathname,
         window.location.origin + pathname
     );
-    displayContent(pathname).then(r => {});
+    displayContent(pathname).then(() => {});
 }
 
-function checkBgPosition(){
-    const bg = document.getElementById("background");
-    if (isInViewport(bg) && isDownwardScrolling()) {
-        showNavbar();
-    } else if (isInViewport(bg) && !isDownwardScrolling()) {
-        hideNavbar();
-    }
-}
-
-async function displayContent(pathname="index"){
+async function displayContent(pathname="index", pop = false){
     window.scrollTo(0, 0);
 
     let root = document.getElementById("root");
-    // const path = window.location.pathname
 
     let path = getPath(pathname);
-    window.history.pushState({}, '', pathname);
+    if(!pop){
+        window.history.pushState({}, '', pathname);
+    }
     root.innerHTML = routes[path];
 
     if(path === '/index'){
-        addScroll();
+        if(window.location.search.indexOf("sort") !== -1){
+            sortCatalog(getParams("sort"));
+        }
+        else{
+            sortCatalog("date");
+        }
+
         await populateCatalog();
     }
-    else{
-        removeScroll();
-    }
-    if(path === '/detail'){
 
+    if(path === '/detail'){
         await populateDetail(getParams("id"))
     }
+
     const scriptSrc = scripts[path];
     const script = document.createElement("script");
     script.src = scriptSrc
     root.appendChild(script);
 }
-
-window.addEventListener("scroll", function () {
-  checkBgPosition();
-});
-
-function showNavbar(){
-    document.getElementById("header").style.backgroundColor = "black";
-    document.getElementById("header").style.boxShadow = "0px 15px 8px 0px rgba(34, 60, 80, 0.2)";
-}
-
-function hideNavbar(){
-    document.getElementById("header").style.backgroundColor = "transparent";
-    document.getElementById("header").style.boxShadow = "none";
-}
-
-function isInViewport(el) {
-    if(el !== null){
-        const position = el.getBoundingClientRect();
-        if (position.top >= 0 && position.bottom <= window.innerHeight) {
-            return true;
-        }
-
-        if (position.top < window.innerHeight && position.bottom > 0) {
-            return true;
-        }
-    }
-}
-
-function isDownwardScrolling(){
-    const st = window.pageYOffset || document.documentElement.scrollTop;
-    let isDownward;
-    isDownward = st > lastScrollTop;
-    lastScrollTop = st <= 0 ? 0 : st;
-    return isDownward;
-}
-
-function  cardClick(){
-    displayContent("/detail").then(r => {});
-}
-
-function addScroll(){
-    let bg = document.getElementById("bg");
-
-}
-
-
-function removeScroll(){
-
-}
-
 
 
