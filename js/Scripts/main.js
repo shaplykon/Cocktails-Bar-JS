@@ -24,15 +24,15 @@ async function populateCatalog(search = false) {
         cocktailItemDiv.classList.add('card');
 
         let cocktailName = document.createElement("h2");
-            cocktailName.textContent = cocktail.value.name.toUpperCase();
-            cocktailItemDiv.appendChild(cocktailName);
+        cocktailName.textContent = cocktail.value.name.toUpperCase();
+        cocktailItemDiv.appendChild(cocktailName);
 
         let coffeeImageDiv = document.createElement("img");
         coffeeImageDiv.src = cocktail.value.image;
         cocktailItemDiv.appendChild(coffeeImageDiv);
 
-        //let ratingDiv = createRatingDiv(coffee.value);
-        //coffeeItemDiv.appendChild(ratingDiv);
+        let ratingDiv = createRatingDiv(cocktail.value);
+        cocktailItemDiv.appendChild(ratingDiv);
         cocktailNode.appendChild(cocktailItemDiv);
         catalogDiv.append(cocktailNode);
     }
@@ -40,37 +40,47 @@ async function populateCatalog(search = false) {
     root.appendChild(catalogDiv);
 }
 
-function sortCatalog(sortOption) {
-    if(getParams("sort") === sortOption){
-        catalogArray = catalogArray.reverse();
+async function sortCatalog(sortOption, direction) {
+    switch (sortOption) {
+        case 'name':
+            catalogArray.sort(function (a, b) {
+                let nameA = a.value.name.toLowerCase(), nameB = b.value.name.toLowerCase();
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            });
+            break;
+        case 'rating':
+            catalogArray.sort((a, b) => getCocktailRating(b.value) - getCocktailRating(a.value));
+            break;
+        case 'date':
+            catalogArray.sort((a, b) => Date.parse(b.value.createDate) - Date.parse(a.value.createDate));
+            break;
     }
-    else{
-        switch (sortOption) {
-            case 'name':
-                catalogArray.sort(function(a, b) {
-                    let nameA = a.value.name.toLowerCase(), nameB = b.value.name.toLowerCase();
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-                    return 0;
-                });
-                break;
-            case 'rating':
-                //catalogArray.sort((a, b) => getCoffeeRating(b.value) - getCoffeeRating(a.value));
-                break;
-            case 'date':
-                catalogArray.sort((a, b) => Date.parse(b.value.createDate) - Date.parse(a.value.createDate));
-                break;
-        }
+    if (direction === 'up') {
+        catalogArray.reverse();
     }
-
 }
 
 function setSortFilter(sortOption) {
-    let url = `/index?sort=${sortOption}`;
+    let direction;
+    if (getParams('sort') !== sortOption) {
+        direction = 'down';
+    } else {
+        direction = getParams('direction');
+        if(direction === 'down'){
+            direction = 'up';
+        }
+        else{
+            direction = 'down';
+        }
+
+    }
+    let url = `/index?sort=${sortOption}&direction=${direction}`;
     displayContent(url, false, document.getElementById("search-field").value);
 }
 
@@ -83,14 +93,14 @@ async function updateCatalog() {
     catalogArray.reverse();
 }
 
-function createRatingDiv(coffee) {
+function createRatingDiv(cocktail) {
     let ratingDiv = document.createElement("div");
     ratingDiv.classList.add('grid-item-rating');
     for (let i = 0; i < 5; i++) {
         let starSpan = document.createElement("span");
         starSpan.classList.add("fa");
         starSpan.classList.add("fa-star");
-        if (getCoffeeRating(coffee) >= i + 0.5) {
+        if (getCocktailRating(cocktail) >= i + 0.5) {
             starSpan.classList.add("checked");
         }
         ratingDiv.appendChild(starSpan);

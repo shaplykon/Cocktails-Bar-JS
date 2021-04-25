@@ -61,15 +61,6 @@ body, html {
     padding: 3%;
 }
 
-.rate .fa{
-    font-size: 35px;
-    color: white;
-
-}
-.rate .checked{
-    color: orange;
-}
-
 .detail .detail-info{
     border-radius:0  20px  20px 0 ;
     display:inline-block;
@@ -200,3 +191,42 @@ input[type=submit]:hover{
     color: white;
 }
 
+/* STAR RATING */
+.star-rating {
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: #FBB03B;
+    height: 20px;
+    width: 100px;
+    margin: 10px auto;
+}
+
+.star-rating-icon {
+    float: right;
+    padding-left: 2px;
+    cursor: pointer;
+    color: white;
+}
+
+.star-rating-icon:last-child {
+    padding-left: 0;
+}
+
+.star-rating-input {
+    display: none;
+}
+
+.star-rating-icon:hover:before,
+.star-rating-icon:hover ~ .star-rating-icon:before,
+.star-rating-input:checked ~ .star-rating-icon:before {
+    color: yellow;
+}
+
+/* STAR RATING END */
+
+.mark-label{
+    font-size: large;
+    font-family: CHICAGO, serif;
+    margin: 20px auto;
+}

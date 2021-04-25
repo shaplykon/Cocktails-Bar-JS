@@ -87,8 +87,8 @@ async function submitForm() {
         );
     }
     else{
+        coffee.image = "https://psv4.userapi.com/c520036/u138605199/docs/d4/1c0504863463/tequila-sunrise.png?extra=v6c02JM9cLKomZ5UZpAd1nPEUr15_0S9Zp0CQ9geVQZqne_AOCLJIaOweFUlCD2KQHvtFQjacXyjTlJs6xweO2PJLoR4hEiJW5eQsfGGQnXK67DfSTRfwhyc9rnjS3jQZ9OjR5Ql8jK36n3m-dWL1hwq";
         cocktailStorage.addCocktail(coffee);
-
         updateCatalog().then(() => {
             displayContent('/index')
         });

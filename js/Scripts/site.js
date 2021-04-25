@@ -1,5 +1,6 @@
 let routes= {
     "/": index,
+    '403':error_403,
     "/index": index,
     "/login": login,
     "/register": register,
@@ -25,7 +26,6 @@ window.onload = async () => {
 
     let navigate = e => {
         let route = e.target.attributes[0].value;
-
         // redirect to the router instance
         if (!routes.hasOwnProperty(route)) {
             window.history.pushState({}, '', 'error')
@@ -46,12 +46,6 @@ window.onload = async () => {
 
     if (auth == null) {
         initializeAuthentication();
-    }
-
-    if (auth.currentUser !== null) {
-        showAuthenticatedControls();
-    } else {
-        hideAuthenticatedControls();
     }
 
     firebase.auth().onAuthStateChanged(user => {
@@ -79,7 +73,6 @@ function getParams(param) {
     return urlParams.get(param);
 }
 
-
 async function displayContent(pathname="index", pop = false, searchText = ''){
     window.scrollTo(0, 0);
 
@@ -87,50 +80,53 @@ async function displayContent(pathname="index", pop = false, searchText = ''){
 
     let path = getPath(pathname);
 
-
     if (!routes.hasOwnProperty(path)) {
         root.innerHTML = error_404;
     } else {
         if(!pop){
             window.history.pushState({}, '', pathname);
         }
-
+        if(path === '/create'){
+            if(auth.currentUser === null){
+                root.innerHTML = error_403;
+                return;
+            }
+        }
         root.innerHTML = routes[path];
-
         if(path === '/index' || path === '/'){
             if(searchText !== ''){
                 let searchBar = document.getElementById("search-field");
                 searchBar.value = searchText;
                 searchBar.focus();
                 await populateCatalog(true);
+                let sortDiv = document.getElementById("sort");
+                sortDiv.style.display = 'none';
             }
             else{
-                await populateCatalog();
-            }
+                if(window.location.search.indexOf("sort") !== -1){
+                    await sortCatalog(getParams("sort"), getParams("direction"));
+                }
 
-            if(window.location.search.indexOf("sort") !== -1){
-                sortCatalog(getParams("sort"));
-            }
-            else{
-                sortCatalog("date");
+                await populateCatalog();
+                let sortDiv = document.getElementById("sort");
+                sortDiv.style.display = 'inline-block';
             }
         }
 
         if(path === '/detail'){
             await populateDetail(getParams("id"))
         }
-
-        const scriptSrc = scripts[path];
-        const script = document.createElement("script");
-        script.src = scriptSrc
-        root.appendChild(script);
     }
-
-
-
-
-
-
 }
 
+function getCocktailRating(cocktail) {
+    if (!('marks' in cocktail)) {
+        return 0;
+    }
 
+    let marks = Object.values(cocktail.marks);
+    if (marks.length === 0) {
+        return 0;
+    }
+    return marks.reduce((a, b) => (a + b)) / marks.length;
+}

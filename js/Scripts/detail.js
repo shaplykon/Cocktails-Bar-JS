@@ -1,4 +1,9 @@
 function leaveComment(){
+    if(auth.currentUser === null){
+        displayContent('/login');
+        return;
+    }
+
     let commentText = document.getElementById("comment").value;
     let author = auth.currentUser.email;
     let comment = new Comments(author, commentText, new Date());
@@ -13,6 +18,10 @@ function leaveComment(){
 async function populateDetail(id){
     let cocktail = await cocktailStorage.getCocktail(id);
 
+    if(cocktail === undefined){
+        await displayContent("/404");
+    }
+
     let name = cocktail.name;
     let description = cocktail.description;
 
@@ -22,7 +31,9 @@ async function populateDetail(id){
     let ingredientsDiv = document.getElementById("ingredients-section");
     let infoDiv = document.getElementById("info-section");
     let imageDiv = document.getElementById("cocktail-image");
+    let markLabelDiv = document.getElementById("mark-label");
 
+    markLabelDiv.innerHTML = "Average mark: " + getCocktailRating(cocktail);
     imageDiv.src = cocktail.image;
     descriptionDiv.innerHTML = description;
     nameDiv.innerHTML = name;
@@ -40,6 +51,10 @@ async function populateDetail(id){
     let date = document.createElement("p");
     date.innerHTML = "Date : " + cocktail.createDate;
     infoDiv.appendChild(date);
+
+    if (await auth.currentUser !== undefined) {
+        await checkMark(auth.currentUser, getParams('id'));
+    }
 
     await populateComments(id);
 }
@@ -125,5 +140,29 @@ function deleteComment(cocktailId, commentId){
         .then(() => populateComments(cocktailId));
 }
 
+async function setMark(button) {
+    if (auth.currentUser === null) {
+        await displayContent('/login');
+        return;
+    }
+    let user = auth.currentUser;
+    let mark = button.value;
+    let id = user.uid;
+    let cocktailId = getParams('id');
+    cocktailStorage.addMark(cocktailId, id, mark);
+    let cocktail = await cocktailStorage.getCocktail(cocktailId);
+    let markLabelDiv = document.getElementById("mark-label");
+    markLabelDiv.innerHTML = "Average mark: " + getCocktailRating(cocktail)
+}
 
+async function checkMark(user, cocktailId) {
+    let cocktail = await cocktailStorage.getCocktail(cocktailId);
+    if ('marks' in cocktail) {
+        let marks = cocktail.marks;
+        if (user.uid in marks) {
+            let input = document.getElementsByClassName('star-rating-input');
+            input[5 - marks[user.uid]].checked = true;
+        }
+    }
+}
 

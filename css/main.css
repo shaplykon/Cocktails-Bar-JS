@@ -152,14 +152,23 @@ body, html {
     padding: 3%;
 }
 
-.rate .fa {
+.fa {
     font-size: 25px;
     color: white;
 
 }
 
-.rate .checked {
-    color: orange;
+.checked {
+    color: yellow;
+}
+
+.grid-item-rating {
+    background-color: #FBB03B;
+    border-radius: 15px;
+    padding: 7px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 /* END RATE BLOCK STYLES*/
@@ -210,11 +219,11 @@ body, html {
     background:#ccc;
     color: #6a6f75;
     width: 20%;
-    margin: 0 40% 10px 40%;
+    margin: 0 40% 25px 40%;
     padding: 6px 15px 6px 35px;
     border-radius: 20px;
     outline: none;
-    box-shadow: rgba(0, 0, 0, 0.3) 0 0 5px
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 5px;
 }
 
 .forbidden{
@@ -224,20 +233,20 @@ body, html {
 
 .forbidden h1{
     font-size: 100px;
-    font-family: Impact;
+    font-family: Impact, serif;
     margin-bottom: 0;
 }
 
 .forbidden h2{
     font-size: 40px;
-    font-family: Impact;
+    font-family: Impact, serif;
     margin-top: 0;
     margin-bottom: 5px;
 }
 
 .forbidden a{
     font-size: 15px;
-    font-family: Impact;
+    font-family: Impact, serif;
     margin-top: 0;
     margin-bottom: 5px;
     text-decoration: none;
@@ -248,7 +257,7 @@ body, html {
 
 .forbidden a:hover{
     font-size: 15px;
-    font-family: Impact;
+    font-family: Impact, serif;
     margin-top: 0;
     margin-bottom: 5px;
     text-decoration: none;
