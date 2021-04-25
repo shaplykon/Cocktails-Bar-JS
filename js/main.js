@@ -19,14 +19,13 @@ async function populateCatalog(search = false) {
             let cocktailItemDiv = document.createElement("div");
             cocktailItemDiv.classList.add('card');
 
-            //let coffeeImageDiv = createCoffeeImageDiv(coffee.value);
-            //coffeeItemDiv.appendChild(coffeeImageDiv);
-
             let cocktailName = document.createElement("h2");
-            //coffeeName.classList.add('coffee-title');
-
             cocktailName.textContent = cocktail.value.name.toUpperCase();
             cocktailItemDiv.appendChild(cocktailName);
+
+            let coffeeImageDiv = document.createElement("img");
+            coffeeImageDiv.src = cocktail.value.image;
+            cocktailItemDiv.appendChild(coffeeImageDiv);
 
             //let ratingDiv = createRatingDiv(coffee.value);
             //coffeeItemDiv.appendChild(ratingDiv);
@@ -34,8 +33,6 @@ async function populateCatalog(search = false) {
             catalogDiv.append(cocktailNode);
         }
         root.appendChild(catalogDiv);
-
-
 }
 
 function sortCatalog(sortOption) {

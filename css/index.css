@@ -58,12 +58,16 @@
 }
 
 .card h2{
-    position: relative;
+    position: absolute;
     top: 0;
     margin: 10px;
     white-space: nowrap;
     font-size: 30px;
-    color: white;
+    color: darkslategrey;
+}
+
+.card img{
+    height: 150px;
 }
 
 .card-image{

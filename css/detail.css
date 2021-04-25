@@ -42,13 +42,12 @@ body, html {
 
 .detail-card h3{
     font-size: 30px;
-    color: white;
+    color: darkslategrey;
     margin-top: 10px;
 }
 
 .detail-card img{
-    width: 50%;
-    height: 55%;
+    height: 200px;
 }
 
 .detail .detail-card .rate{

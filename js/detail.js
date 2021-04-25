@@ -21,7 +21,9 @@ async function populateDetail(id){
     let valueDiv = document.getElementById("value-label");
     let ingredientsDiv = document.getElementById("ingredients-section");
     let infoDiv = document.getElementById("info-section");
+    let imageDiv = document.getElementById("cocktail-image");
 
+    imageDiv.src = cocktail.image;
     descriptionDiv.innerHTML = description;
     nameDiv.innerHTML = name;
     valueDiv.innerHTML = "Value: " + cocktail.value + " ml";

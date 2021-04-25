@@ -11,6 +11,7 @@ class Storage {
             addedBy: cocktail.addedBy,
             value: cocktail.value,
             ingredients: cocktail.ingredients,
+            image :cocktail.image
         })
     }
 

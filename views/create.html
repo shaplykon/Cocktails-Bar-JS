@@ -26,7 +26,16 @@
             <label for="coffee-value">Value:</label>
 
             <input type="number" id="coffee-value" name="coffee-value" value="" placeholder="ml" required="">
-
+            <div class="file-form-wrap">
+                <div class="file-upload">
+                    <label>
+                        <input id="uploaded-file1" type="file" name="file" onchange="getFileParam();" />
+                        <span>Choose file</span><br />
+                    </label>
+                </div>
+                <div id="preview1">&nbsp;</div>
+                <div id="file-size1">&nbsp;</div>
+            </div>
             <label for="description-textarea"></label>
             <textarea id="description-textarea" name="name" rows="3" placeholder="Description" required=""></textarea>
         </div>

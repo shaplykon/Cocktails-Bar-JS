@@ -11,6 +11,16 @@ create = "<!DOCTYPE html>\n" +
     "\n" +
     "            <input type=\"number\" id=\"coffee-value\" name=\"coffee-value\" value=\"\" placeholder=\"ml\" oninput=\"recalculateImage();\" required=\"\">\n" +
     "\n" +
+    " <div class=\"file-form-wrap\">\n" +
+    "                <div class=\"file-upload\">\n" +
+    "                    <label>\n" +
+    "                        <input id=\"uploaded-file1\" type=\"file\" name=\"file\" onchange=\"getFileParam();\" />\n" +
+    "                        <span>Choose file</span><br />\n" +
+    "                    </label>\n" +
+    "                </div>\n" +
+    "                <div id=\"preview1\">&nbsp;</div>\n" +
+    "                <div id=\"file-size1\">&nbsp;</div>\n" +
+    "            </div>" +
     "            <label for=\"description-textarea\"></label>\n" +
     "            <textarea id=\"description-textarea\" name=\"name\" rows=\"3\" placeholder=\"Description\" required=\"\"></textarea>\n" +
     "        </div>\n" +

@@ -2,7 +2,7 @@ detail = "\n" +
     "<div class=\"anchor\"></div><section class=\"detail\">\n" +
     "    <section class=\"detail-card\">\n" +
     "        <h3 id='name-label'>Name</h3>\n" +
-    "        <img alt='Cocktail image' src=\"https://clipart-best.com/img/cocktail/cocktail-clip-art-6.png\">\n" +
+    "        <img  alt='Cocktail image' id='cocktail-image'>\n" +
     "        <div class=\"rate\">\n" +
     "            <span class=\"fa fa-star checked\"></span>\n" +
     "            <span class=\"fa fa-star checked\"></span>\n" +
