@@ -1,6 +1,6 @@
 index =
     "  <main class=\"content\" id=\"content\" >\n" +
-    "        <h1>Products</h1>\n" +
+    "        <h1>PRODUCTS</h1>\n" +
     "<input autofocus  type=\"text\" id ='search-field' oninput='search()' class='search-field' placeholder=\"search\">\n" +
     "    <div class=\"dropdown\">\n" +
     "        <button class=\"dropbtn\">Filters</button>\n" +

@@ -63,7 +63,7 @@ function registerFunction() {
 function logoutFunction(){
     auth.signOut().then(function() {
         hideAuthenticatedControls();
-        onNavigate("/index")
+        displayContent("/index")
     });
 }
 

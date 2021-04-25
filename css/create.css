@@ -67,6 +67,7 @@ input[type=text]{
     height: 400px;
     margin: 50px auto;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 20px;
 }
 
 .coffee-form-left {
@@ -191,9 +192,10 @@ input[type=text]{
 #description-textarea {
     padding: 10px;
     font-size: 1em;
-    width: 300px;
+    width: 90%;
     box-sizing: border-box;
     height: 100px;
+    margin: 10px auto;
 }
 
 @media only screen

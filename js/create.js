@@ -32,6 +32,8 @@ function removeIngredient() {
 
 
 async function submitForm() {
+    let submitBuftton = document.getElementById("create-button");
+    submitBuftton.disabled = true;
     let name = document.getElementById('coffee-name').value;
     let value = document.getElementById('coffee-value').value;
     let description = document.getElementById('description-textarea').value;
@@ -40,6 +42,7 @@ async function submitForm() {
 
     let isInputValid = await validateInput(name, value, description);
     if (!isInputValid) {
+        submitBuftton.disabled = false;
         return;
     }
 
@@ -77,7 +80,7 @@ async function submitForm() {
                     cocktailStorage.addCocktail(coffee);
 
                     updateCatalog().then(() => {
-                        onNavigate('/index')
+                        displayContent('/index')
                     });
                 });
             }
@@ -87,7 +90,7 @@ async function submitForm() {
         cocktailStorage.addCocktail(coffee);
 
         updateCatalog().then(() => {
-            onNavigate('/index')
+            displayContent('/index')
         });
     }
 }

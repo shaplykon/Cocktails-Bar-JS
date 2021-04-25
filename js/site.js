@@ -20,7 +20,6 @@ window.onload = async () => {
         displayContent(window.location.pathname, true).then(() => { })
     };
 
-
     let root = document.getElementById("root");
     let definedRoutes = Array.from(document.getElementsByClassName("nav-link"));
 
@@ -30,7 +29,7 @@ window.onload = async () => {
         // redirect to the router instance
         if (!routes.hasOwnProperty(route)) {
             window.history.pushState({}, '', 'error')
-            root.innerHTML = `<h1 style="margin:auto auto">This route is not Defined</h1>`
+            root.innerHTML = error_404;
         } else {
             displayContent(route).then(() => { });
         }
@@ -63,7 +62,7 @@ window.onload = async () => {
         }
     });
 
-    onNavigate(window.location);
+    await displayContent(window.location.pathname);
 }
 
 function getPath(pathname) {
@@ -80,14 +79,6 @@ function getParams(param) {
     return urlParams.get(param);
 }
 
-const onNavigate = (pathname) => {
-    window.history.pushState(
-        {},
-        pathname,
-        window.location.origin + pathname
-    );
-    displayContent(pathname).then(() => {});
-}
 
 async function displayContent(pathname="index", pop = false, searchText = ''){
     window.scrollTo(0, 0);
@@ -95,40 +86,51 @@ async function displayContent(pathname="index", pop = false, searchText = ''){
     let root = document.getElementById("root");
 
     let path = getPath(pathname);
-    if(!pop){
-        window.history.pushState({}, '', pathname);
+
+
+    if (!routes.hasOwnProperty(path)) {
+        root.innerHTML = error_404;
+    } else {
+        if(!pop){
+            window.history.pushState({}, '', pathname);
+        }
+
+        root.innerHTML = routes[path];
+
+        if(path === '/index' || path === '/'){
+            if(searchText !== ''){
+                let searchBar = document.getElementById("search-field");
+                searchBar.value = searchText;
+                searchBar.focus();
+                await populateCatalog(true);
+            }
+            else{
+                await populateCatalog();
+            }
+
+            if(window.location.search.indexOf("sort") !== -1){
+                sortCatalog(getParams("sort"));
+            }
+            else{
+                sortCatalog("date");
+            }
+        }
+
+        if(path === '/detail'){
+            await populateDetail(getParams("id"))
+        }
+
+        const scriptSrc = scripts[path];
+        const script = document.createElement("script");
+        script.src = scriptSrc
+        root.appendChild(script);
     }
-    root.innerHTML = routes[path];
-
-    if(path === '/index'){
-        if(searchText !== ''){
-            let searchBar = document.getElementById("search-field");
-            searchBar.value = searchText;
-            searchBar.focus();
-            await populateCatalog(true);
-        }
-        else{
-            await populateCatalog();
-        }
-
-        if(window.location.search.indexOf("sort") !== -1){
-            sortCatalog(getParams("sort"));
-        }
-        else{
-            sortCatalog("date");
-        }
 
 
-    }
 
-    if(path === '/detail'){
-        await populateDetail(getParams("id"))
-    }
 
-    const scriptSrc = scripts[path];
-    const script = document.createElement("script");
-    script.src = scriptSrc
-    root.appendChild(script);
+
+
 }
 
 

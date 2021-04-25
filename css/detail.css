@@ -8,6 +8,7 @@ body, html {
     height: 400px;
     margin: 50px auto;
     border-radius: 20px;
+    box-shadow: 0 0 7px rgb(55, 64, 64);
 }
 
 .anchor{
@@ -44,6 +45,7 @@ body, html {
     font-size: 30px;
     color: darkslategrey;
     margin-top: 10px;
+    font-family: CHICAGO, serif;
 }
 
 .detail-card img{
@@ -83,7 +85,8 @@ body, html {
 .detail .detail-info p{
     font-size: 30px;
     color: white;
-    margin-top: 10px;
+    margin: 10px 5px;
+    font-family: CHICAGO, serif;
 }
 
 .description{
@@ -91,17 +94,24 @@ body, html {
     width: 1000px;
     border-radius: 25px;
     background-color: #e0dede;
-    padding: 5px 10px;
     overflow: hidden;
-    margin: 0 auto ;
+    margin: 0 auto;
+    box-shadow: 0 0 7px rgb(55, 64, 64);
+    font-family: CHICAGO, serif;
+    font-size: larger;
 }
-
+.description h1{
+    margin: 0 auto;
+}
 .comments{
     background-color: #e0dede;
     margin: 20px auto;
     width: 1000px;
     text-align: center;
     border-radius: 25px;
+    box-shadow: 0 0 7px rgb(55, 64, 64);
+    font-family: CHICAGO, serif;
+    font-size: larger;
 }
 
 textarea{

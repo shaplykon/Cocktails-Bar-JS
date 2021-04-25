@@ -114,8 +114,7 @@ body, html {
 .logos{
     width: 100%;
     overflow: hidden;
-    margin-left: calc(100%/9);
-    margin-top: calc(100%/18);
+    margin-left: 20px;
 }
 
 .logo{
@@ -215,5 +214,45 @@ body, html {
     padding: 6px 15px 6px 35px;
     border-radius: 20px;
     outline: none;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 5px
+}
+
+.forbidden{
+    margin: 13% auto;
+    text-align: center;
+}
+
+.forbidden h1{
+    font-size: 100px;
+    font-family: Impact;
+    margin-bottom: 0;
+}
+
+.forbidden h2{
+    font-size: 40px;
+    font-family: Impact;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.forbidden a{
+    font-size: 15px;
+    font-family: Impact;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #4a4a4a;
+    transition: all 0.3s;
+    letter-spacing: initial;
+}
+
+.forbidden a:hover{
+    font-size: 15px;
+    font-family: Impact;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #4a4a4a;
+    letter-spacing: 2px;
 }
 

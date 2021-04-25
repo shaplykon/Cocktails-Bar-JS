@@ -21,10 +21,10 @@
 }
 
 .content h1{
-
     text-align: center;
-    font-family: "Yu Gothic UI Light", serif;
-    font-size: xx-large;
+    font-family: MONOSPACE, serif;
+    font-size: 3em;
+    margin: 20px auto;
 }
 
 /* PRODUCT CARDS STYLES*/
@@ -87,7 +87,7 @@ body{
 /* END PRODUCT CARDS STYLES*/
 
 .load-ring{
-    margin-left: 50%;
+    margin-left: 48%;
     margin-top: 8.5%;
     margin-bottom: 8.5%;
 }
