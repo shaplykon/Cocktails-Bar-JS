@@ -27,9 +27,9 @@ async function populateCatalog(search = false) {
         cocktailName.textContent = cocktail.value.name.toUpperCase();
         cocktailItemDiv.appendChild(cocktailName);
 
-        let coffeeImageDiv = document.createElement("img");
-        coffeeImageDiv.src = cocktail.value.image;
-        cocktailItemDiv.appendChild(coffeeImageDiv);
+        let cocktailImageDiv = document.createElement("img");
+        cocktailImageDiv.src = cocktail.value.image;
+        cocktailItemDiv.appendChild(cocktailImageDiv);
 
         let ratingDiv = createRatingDiv(cocktail.value);
         cocktailItemDiv.appendChild(ratingDiv);
@@ -126,5 +126,6 @@ function search() {
 
     displayContent('/index', true, searchText);
 }
+
 populateCatalog().then(() => {});
 let catalogArray = [];

@@ -34,8 +34,8 @@ function removeIngredient() {
 async function submitForm() {
     let submitBuftton = document.getElementById("create-button");
     submitBuftton.disabled = true;
-    let name = document.getElementById('coffee-name').value;
-    let value = document.getElementById('coffee-value').value;
+    let name = document.getElementById('cocktail-name').value;
+    let value = document.getElementById('cocktail-value').value;
     let description = document.getElementById('description-textarea').value;
     let user = auth.currentUser.email;
     name = name.trim().toLowerCase();
@@ -66,7 +66,7 @@ async function submitForm() {
         ingredientsList.push(new Ingredient(name, value));
     }
 
-    let coffee = new Cocktail(name.trim().toLowerCase(), user, value, description, ingredientsList);
+    let cocktail = new Cocktail(name.trim().toLowerCase(), user, value, description, ingredientsList);
 
     let file = document.getElementById('uploaded-file1').files[0];
 
@@ -76,8 +76,8 @@ async function submitForm() {
         uploadTask.on('state_changed',
            () => {
                 uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-                    coffee.image = downloadURL;
-                    cocktailStorage.addCocktail(coffee);
+                    cocktail.image = downloadURL;
+                    cocktailStorage.addCocktail(cocktail);
 
                     updateCatalog().then(() => {
                         displayContent('/index')
@@ -87,8 +87,8 @@ async function submitForm() {
         );
     }
     else{
-        coffee.image = "https://psv4.userapi.com/c520036/u138605199/docs/d4/1c0504863463/tequila-sunrise.png?extra=v6c02JM9cLKomZ5UZpAd1nPEUr15_0S9Zp0CQ9geVQZqne_AOCLJIaOweFUlCD2KQHvtFQjacXyjTlJs6xweO2PJLoR4hEiJW5eQsfGGQnXK67DfSTRfwhyc9rnjS3jQZ9OjR5Ql8jK36n3m-dWL1hwq";
-        cocktailStorage.addCocktail(coffee);
+        cocktail.image = "https://psv4.userapi.com/c520036/u138605199/docs/d4/1c0504863463/tequila-sunrise.png?extra=v6c02JM9cLKomZ5UZpAd1nPEUr15_0S9Zp0CQ9geVQZqne_AOCLJIaOweFUlCD2KQHvtFQjacXyjTlJs6xweO2PJLoR4hEiJW5eQsfGGQnXK67DfSTRfwhyc9rnjS3jQZ9OjR5Ql8jK36n3m-dWL1hwq";
+        cocktailStorage.addCocktail(cocktail);
         updateCatalog().then(() => {
             displayContent('/index')
         });
@@ -111,9 +111,9 @@ async function validateInput(name, value, description) {
         return false;
     }
 
-    let coffees = await cocktailStorage.getCatalog();
-    for (let id in coffees) {
-        if (coffees[id].name === name) {
+    let cocktails = await cocktailStorage.getCatalog();
+    for (let id in cocktails) {
+        if (cocktails[id].name === name) {
             alert ('Name already exists.');
             return false;
         }

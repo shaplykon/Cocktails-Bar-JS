@@ -23,7 +23,7 @@ window.onload = async () => {
 
     let root = document.getElementById("root");
     let definedRoutes = Array.from(document.getElementsByClassName("nav-link"));
-
+    await populateCatalog();
     let navigate = e => {
         let route = e.target.attributes[0].value;
         // redirect to the router instance
@@ -94,6 +94,14 @@ async function displayContent(pathname="index", pop = false, searchText = ''){
         }
         root.innerHTML = routes[path];
         if(path === '/index' || path === '/'){
+            if(catalogArray.length === 0){
+                let contentDiv = document.getElementById("content");
+                let notFoundDiv = document.createElement("div");
+                notFoundDiv.innerHTML = "It's nothing to display here"
+                notFoundDiv.classList.add("not-found");
+                contentDiv.appendChild(notFoundDiv);
+            }
+
             if(searchText !== ''){
                 let searchBar = document.getElementById("search-field");
                 searchBar.value = searchText;
